@@ -2,6 +2,7 @@ import streamlit as st
 from data.conexao import conectar_planilha
 from view.entrada_reserva import obter_dados_reserva
 from controller.atualizar import atualizar_dataframe
+from services.carregar_dados import carregar_dataframe
 from services.validacoes import validar_reserva
 
 st.set_page_config(layout="wide")
@@ -20,6 +21,7 @@ with st.form("form_reserva"):
     nova_linha = obter_dados_reserva()
     enviado = st.form_submit_button("Adicionar Reserva")
     if enviado:
-        validar_reserva
+        df_reservas=carregar_dataframe()
+        validar_reserva(df_reservas)
         atualizar_dataframe(nova_linha, aba)
         st.success("Reserva adicionada com sucesso!")
