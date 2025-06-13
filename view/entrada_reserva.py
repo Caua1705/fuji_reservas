@@ -10,6 +10,6 @@ def obter_dados_reserva():
     with col2:
         horario=st.time_input("Horário da Reserva")
         telefone=st.text_input("Telefone (somente números)")
-        area = st.radio("Área do Restaurante", ["Interno", "Externo"])
+        area = st.radio("Área do Restaurante", ["Interno", "Externo"],horizontal=True)
     observacoes=st.text_input("Observações")
     return [data,horario,nome,telefone,quantidade_pessoas,area,observacoes]
