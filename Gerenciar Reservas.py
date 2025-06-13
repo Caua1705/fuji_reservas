@@ -5,6 +5,12 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+
+# Título e Subtítulo
+st.title("Sistema de Gerenciamento de Reservas Fuji")
+st.markdown("### Organize, registre e acompanhe suas reservas de forma prática e segura em tempo real.")
+
+
 #Cria conexão
 if "aba" not in st.session_state:
     st.session_state.aba = conectar_planilha()
