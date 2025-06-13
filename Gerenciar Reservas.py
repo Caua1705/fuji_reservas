@@ -18,9 +18,9 @@ if "aba" not in st.session_state:
 aba = st.session_state.aba
 
 with st.form("form_reserva"):
-    nova_linha = obter_dados_reserva()
+    dict_dados = obter_dados_reserva()
     enviado = st.form_submit_button("Adicionar Reserva")
     if enviado:
         df_reservas=carregar_dataframe()
-        processar_nova_reserva(nova_linha, aba)
+        processar_nova_reserva(df_reservas,dict_dados["Data"],dict_dados,aba)
         st.success("Reserva adicionada com sucesso!")

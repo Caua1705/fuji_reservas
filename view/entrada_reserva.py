@@ -12,4 +12,12 @@ def obter_dados_reserva():
         telefone=st.text_input("Telefone (somente números)")
         area = st.radio("Área do Restaurante", ["Interno", "Externo"],horizontal=True)
     observacoes=st.text_input("Observações")
-    return [data,horario,nome,telefone,quantidade_pessoas,area,observacoes]
+    return {
+        "Data": data,
+        "Horário": horario,
+        "Nome": nome,
+        "Telefone": telefone,
+        "Nº de Pessoas": quantidade_pessoas,
+        "Área": area,
+        "Observações": observacoes
+    }
