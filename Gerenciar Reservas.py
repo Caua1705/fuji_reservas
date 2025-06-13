@@ -6,7 +6,9 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 #Cria conexão
-aba = conectar_planilha()
+if "aba" not in st.session_state:
+    st.session_state.aba = conectar_planilha()
+aba = st.session_state.aba
 nova_linha=obter_dados_reserva()
 if st.button("Adicionar Reserva"):
     #Coleta dados da Interface

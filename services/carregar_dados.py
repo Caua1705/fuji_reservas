@@ -1,5 +1,6 @@
 import pandas as pd
 from data.conexao import conectar_planilha
+import streamlit as st
 
 def carregar_dataframe():
     aba = conectar_planilha()

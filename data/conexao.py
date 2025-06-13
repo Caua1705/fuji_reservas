@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import streamlit as st
 
-@st.cache_data(show_spinner=False)
 def conectar_planilha():
     acesso = [
         "https://spreadsheets.google.com/feeds",
@@ -16,5 +15,3 @@ def conectar_planilha():
     aba = planilha.sheet1
 
     return aba
-
-st.cache_data
