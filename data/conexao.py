@@ -1,4 +1,5 @@
 import gspread
+import json
 from google.oauth2.service_account import Credentials
 import streamlit as st
 
@@ -8,7 +9,7 @@ def conectar_planilha():
         "https://www.googleapis.com/auth/drive"
     ]
 
-    credenciais = Credentials.from_service_account_file("credenciais.json", scopes=acesso)
+    credenciais = Credentials.from_service_account_info(json.loads(st.secrets["CREDENCIAIS_JSON"]), scopes=acesso)
     cliente = gspread.authorize(credenciais)
 
     planilha = cliente.open("reservas_fuji")
