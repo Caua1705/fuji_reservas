@@ -1,0 +1,6 @@
+import streamlit as st
+def validar_reserva(df_filtrado,maximo_reservas):
+    soma_reservas=df_filtrado["Nº de Pessoas"].sum()
+    if soma_reservas>maximo_reservas:
+        st.error("O número de reservas é maior que o permitido")
+        st.stop()

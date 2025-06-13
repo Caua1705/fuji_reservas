@@ -1,9 +1,8 @@
 import streamlit as st
 from data.conexao import conectar_planilha
 from view.entrada_reserva import obter_dados_reserva
-from controller.atualizar import atualizar_dataframe
+from controller.reservas_controller import processar_nova_reserva
 from services.carregar_dados import carregar_dataframe
-from services.validacoes import validar_reserva
 
 st.set_page_config(layout="wide")
 
@@ -17,11 +16,11 @@ st.markdown("### Organize, registre e acompanhe suas reservas de forma prática 
 if "aba" not in st.session_state:
     st.session_state.aba = conectar_planilha()
 aba = st.session_state.aba
+
 with st.form("form_reserva"):
     nova_linha = obter_dados_reserva()
     enviado = st.form_submit_button("Adicionar Reserva")
     if enviado:
         df_reservas=carregar_dataframe()
-        validar_reserva(df_reservas)
-        atualizar_dataframe(nova_linha, aba)
+        processar_nova_reserva(nova_linha, aba)
         st.success("Reserva adicionada com sucesso!")
