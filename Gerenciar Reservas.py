@@ -15,8 +15,9 @@ st.markdown("### Organize, registre e acompanhe suas reservas de forma prática 
 if "aba" not in st.session_state:
     st.session_state.aba = conectar_planilha()
 aba = st.session_state.aba
-nova_linha=obter_dados_reserva()
-if st.button("Adicionar Reserva"):
-    #Coleta dados da Interface
-    #Adiciona a nova linha
-    atualizar_dataframe(nova_linha,aba)
+with st.form("form_reserva"):
+    nova_linha = obter_dados_reserva()
+    enviado = st.form_submit_button("Adicionar Reserva")
+    if enviado:
+        atualizar_dataframe(nova_linha, aba)
+        st.success("Reserva adicionada com sucesso!")
