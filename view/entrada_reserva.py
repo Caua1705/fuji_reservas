@@ -17,7 +17,7 @@ def obter_dados_reserva():
         "Horário": horario,
         "Nome": nome,
         "Telefone": telefone,
-        "Nº de Pessoas": quantidade_pessoas,
+        "Número de Pessoas": quantidade_pessoas,
         "Área": area,
         "Observações": observacoes
     }
