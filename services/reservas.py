@@ -22,8 +22,8 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     df_filtrado = filtrar_dataframe(df_formatado, data)
     
     # Valida as reservas no DataFrame atualizado
-    validar_reserva(df_filtrado, maximo_reservas)
     st.write(df_filtrado)
+    validar_reserva(df_filtrado, maximo_reservas)
     
     # Registra na planilha o dado do usuário
     registrar_reserva(nova_linha, aba)
