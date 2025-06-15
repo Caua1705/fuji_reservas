@@ -7,7 +7,6 @@ from model.adicionar import registrar_reserva
 import streamlit as st
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
-    st.write(df_reservas) 
     # Formata a nova linha com os dados fornecidos
     nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)
     df_nova_linha = pd.DataFrame([nova_linha], columns=df_reservas.columns)
@@ -25,4 +24,3 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
 
     # Registra na planilha
     registrar_reserva(nova_linha, aba)
-    st.success("Reserva registrada com sucesso!")
