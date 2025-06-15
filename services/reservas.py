@@ -4,7 +4,6 @@ from services.filtrar import filtrar_dataframe
 from utils.formatadores import formatar_dados
 from services.validacoes import validar_reserva
 from model.adicionar import registrar_reserva
-import streamlit as st
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
     # Formata a nova linha com os dados fornecidos
@@ -24,3 +23,5 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
 
     # Registra na planilha
     registrar_reserva(nova_linha, aba)
+    
+    return df_atualizado

@@ -13,7 +13,8 @@ if "aba" not in st.session_state:
 
 # Guarda o dataframe no estado para evitar recarregar sempre
 if "df_reservas" not in st.session_state:
-    st.session_state.df_reservas = carregar_dataframe()
+    df_reservas=carregar_dataframe()
+    st.session_state.df_reservas = df_reservas
 
 aba = st.session_state.aba
 
@@ -24,9 +25,7 @@ with st.form("form_reserva"):
         controlar_nova_reserva(st.session_state.df_reservas, dict_dados["Data"], dict_dados, aba)
         
         # Recarrega o dataframe atualizado após gravar na planilha
-        st.session_state.df_reservas = carregar_dataframe()
+        df_reservas=carregar_dataframe()
+        st.session_state.df_reservas = df_reservas
         
         st.success("Reserva adicionada com sucesso!")
-
-# Exibe o dataframe atualizado na tela
-st.dataframe(st.session_state.df_reservas)
