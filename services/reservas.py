@@ -1,6 +1,7 @@
 import pandas as pd
 from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA
 from services.filtrar import filtrar_dataframe
+from utils.formatadores import formatar_dados
 from services.validacoes import validar_reserva
 from model.adicionar import registrar_reserva
 import streamlit as st
@@ -14,8 +15,11 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     # Concatena ao DataFrame existente (verticalmente)
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
     
+    #Formata o DataFrame concatenado
+    df_formatado=formatar_dados(df_atualizado)
+
     # Filtra o DataFrame atualizado
-    df_filtrado = filtrar_dataframe(df_atualizado, data)
+    df_filtrado = filtrar_dataframe(df_formatado, data)
     
     # Valida as reservas no DataFrame atualizado
     validar_reserva(df_filtrado, maximo_reservas)
