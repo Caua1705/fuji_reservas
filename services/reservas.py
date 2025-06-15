@@ -3,6 +3,7 @@ from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA
 from services.filtrar import filtrar_dataframe
 from services.validacoes import validar_reserva
 from model.adicionar import registrar_reserva
+import streamlit as st
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
     nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)  # dados do usuário
@@ -18,6 +19,7 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     
     # Valida as reservas no DataFrame atualizado
     validar_reserva(df_filtrado, maximo_reservas)
+    st.write(df_filtrado)
     
     # Registra na planilha o dado do usuário
     registrar_reserva(nova_linha, aba)
