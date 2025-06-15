@@ -18,11 +18,11 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     #Formata o DataFrame concatenado
     df_formatado=formatar_dados(df_atualizado)
 
+    st.write(df_formatado)
     # Filtra o DataFrame atualizado
     df_filtrado = filtrar_dataframe(df_formatado, data)
     
     # Valida as reservas no DataFrame atualizado
-    st.write(df_filtrado)
     validar_reserva(df_filtrado, maximo_reservas)
     
     # Registra na planilha o dado do usuário
