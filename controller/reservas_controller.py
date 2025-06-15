@@ -7,5 +7,6 @@ from controller.validacoes import validar_reserva
 def processar_nova_reserva(df_reservas,data,dict_dados,aba):
     nova_linha_=formatar_nova_linha(dict_dados,ORDEM_CAMPOS_RESERVA)
     df_filtrado=filtrar_dataframe(df_reservas,data)
-    validar_reserva(df_filtrado,50)
+    if not df_filtrado.empty:
+        validar_reserva(df_filtrado,50)
     registrar_reserva(nova_linha_,aba)
