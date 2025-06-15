@@ -1,5 +1,6 @@
 import pandas as pd
 from data.conexao import conectar_planilha
+from utils.formatadores import formatar_dados
 
 def carregar_dataframe():
     aba = conectar_planilha()
@@ -13,5 +14,7 @@ def carregar_dataframe():
     colunas = linhas[0]
     dados = linhas[1:]
 
-    return pd.DataFrame(dados, columns=colunas)
+    df=pd.DataFrame(dados, columns=colunas)
+    df_formatado=formatar_dados(df)
+    return df_formatado
     
