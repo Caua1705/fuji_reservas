@@ -7,23 +7,22 @@ from model.adicionar import registrar_reserva
 import streamlit as st
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
-    nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)  # dados do usuário
-    
-    # Cria um DataFrame com a nova linha, associando as colunas certas
+    st.write(df_reservas) 
+    # Formata a nova linha com os dados fornecidos
+    nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)
     df_nova_linha = pd.DataFrame([nova_linha], columns=df_reservas.columns)
-    
-    # Concatena ao DataFrame existente (verticalmente)
-    df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
-    
-    #Formata o DataFrame concatenado
-    df_formatado=formatar_dados(df_atualizado)
+    df_nova_linha = formatar_dados(df_nova_linha)
 
-    st.write(df_formatado)
-    # Filtra o DataFrame atualizado
-    df_filtrado = filtrar_dataframe(df_formatado, data)
+    # Cria o DataFrame atualizado simulando a adição
+    df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
+    df_atualizado = formatar_dados(df_atualizado)
+
+    # Filtra as reservas do mesmo dia para validação
+    df_filtrado = filtrar_dataframe(df_atualizado, pd.to_datetime(data, format="%d/%m/%Y").date())
     
-    # Valida as reservas no DataFrame atualizado
+    # Valida se o total de reservas para o dia excede o máximo
     validar_reserva(df_filtrado, maximo_reservas)
-    
-    # Registra na planilha o dado do usuário
+
+    # Registra na planilha
     registrar_reserva(nova_linha, aba)
+    st.success("Reserva registrada com sucesso!")
