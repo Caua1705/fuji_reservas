@@ -9,7 +9,7 @@ def obter_dados_reserva():
         nome=st.text_input("Nome do Cliente")
         quantidade_pessoas=st.number_input("Número de Pessoas",min_value=0)
     with col2:
-        horario=st.time_input("Horário da Reserva")
+        horario=st.selectbox(["18:00", "18:30", "19:00"])
         telefone=st.text_input("Telefone (somente números)")
         area = st.radio("Área do Restaurante", ["Interno", "Externo"],horizontal=True)
     observacoes=st.text_input("Observações")
