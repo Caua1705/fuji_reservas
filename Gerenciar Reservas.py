@@ -44,7 +44,7 @@ with st.form("form_reserva", border=True):
 st.divider()
 
 # 📋 Últimas reservas
-st.markdown("## 📋 Últimas Reservas")
+st.markdown("## 📋 Próximas Reservas")
 
 df = st.session_state.df_reservas.copy()
 
