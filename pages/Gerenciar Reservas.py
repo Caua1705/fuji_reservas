@@ -11,25 +11,22 @@ if "df_reservas" not in st.session_state:
 df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
 
-# =======================
-# 🔝 TOPO DA PÁGINA
-# =======================
-st.markdown("""
-    <div style="padding: 1rem 0;">
-        <h1 style="margin-bottom: 0;">📅 Gerenciamento de Reservas</h1>
-        <p style="color: gray; font-size: 1rem;">Visualize rapidamente todas as reservas do restaurante organizadas por ambiente e horário.</p>
-    </div>
-""", unsafe_allow_html=True)
+# Título principal
+st.title("📅 Gerenciamento de Reservas")
 
-# 📆 Seletor de Data
+# Subtítulo
+st.markdown("Visualize rapidamente todas as reservas do restaurante organizadas por ambiente e horário.")
+
+# Seletor de data
 data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
 
-# 🔎 Filtrar reservas do dia
+# Reservas filtradas
 reservas_dia = df_reservas[df_reservas["Data"] == data_selecionada]
 
-st.markdown(f"### 📋 Reservas para {data_selecionada.strftime('%d/%m/%Y')}")
+# Cabeçalho para o dia selecionado
+st.header(f"📋 Reservas para {data_selecionada.strftime('%d/%m/%Y')}")
 
-# ➗ Separar por ambiente
+# Colunas para ambientes
 col1, col2 = st.columns(2)
 
 def exibir_resumo(reservas, ambiente):
