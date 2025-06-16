@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
+from datetime import datetime
 from services.carregar_dados import carregar_dataframe
+from services.filtrar import filtrar_df_reservas
 
 st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
 
@@ -11,27 +13,11 @@ if "df_reservas" not in st.session_state:
 df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
 
-# Cabeçalho com título e data no canto direito
-col1, col2 = st.columns([7, 1])
-
-with col1:
-    st.title("📅 Gerenciamento de Reservas")
-    # Coloca o seletor de data aqui, logo após o título
-    data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
-
-with col2:
-    st.markdown(f"""
-    <p style='
-        color: black;
-        font-size: 1.0rem;
-        font-weight: bold;
-        text-align: right;
-        margin-bottom: 0;
-    '>{data_selecionada.strftime('%d/%m/%Y')}</p>
-    """, unsafe_allow_html=True)
+st.title("📅 Gerenciamento de Reservas")
+data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", datetime.today().date(),format="%d,%m,%Y")
 
 # Filtrar reservas
-reservas_dia = df_reservas[df_reservas["Data"] == data_selecionada]
+reservas_dia = filtrar_df_reservas(df_reservas,data_selecionada)
 
 # Colunas para ambientes
 col1, col2 = st.columns(2)
