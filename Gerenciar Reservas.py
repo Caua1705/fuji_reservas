@@ -48,4 +48,14 @@ st.divider()
 # 📋 Últimas reservas
 st.markdown("## 📋 Últimas Reservas")
 
-st.write(st.session_state.df_reservas.tail(5))
+df = st.session_state.df_reservas.copy()
+
+# Ordenar por Data e Horário (do mais recente pro mais antigo)
+df = df.sort_values(by=["Data", "Horário"], ascending=False)
+
+# Mostrar as 5 últimas reservas (mais novas no topo)
+st.dataframe(
+    df.head(5)[["Data", "Nome", "Ambiente", "Horário"]],
+    use_container_width=True,
+    height=300
+)
