@@ -27,15 +27,16 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     
     return df_atualizado
 
-def exibir_resumo(df_reservas, ambiente):
+def exibir_resumo(df_reservas, ambiente, filial):
     if df_reservas.empty:
         st.info(f"Nenhuma reserva no ambiente {ambiente} para esta data.")
         return
 
-    horarios_unicos = df_reservas["Horário"].unique()
+    df_agrupado_filial=df_reservas.loc[df_reservas["Filial"]==filial]
+    horarios_unicos = df_agrupado_filial["Horário"].unique()
 
     for horario in horarios_unicos:
-        df_horario = df_reservas.loc[df_reservas["Horário"]==horario]
+        df_horario = df_agrupado_filial.loc[df_agrupado_filial["Horário"]==horario]
         total_pessoas = df_horario["Número de Pessoas"].sum()
         qtd_reservas = len(df_horario)
 
