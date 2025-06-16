@@ -15,8 +15,9 @@ df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
 
 st.title("📅 Gerenciamento de Reservas")
-data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", datetime.today().date(),format="DD/MM/YYYY")
-filial=st.selectbox("🏢 Filial",["Aldeota","Cambeba"])
+with st.sidebar:
+    data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", datetime.today().date(),format="DD/MM/YYYY")
+    filial=st.selectbox("🏢 Filial",["Aldeota","Cambeba"])
 
 # Filtrar reservas
 reservas_dia = filtrar_df_reservas(df_reservas,data_selecionada)
