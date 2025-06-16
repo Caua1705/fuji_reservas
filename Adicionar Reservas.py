@@ -43,15 +43,3 @@ with st.form("form_reserva", border=True):
             st.session_state.df_reservas = carregar_dataframe()
             st.success("✅ Reserva adicionada com sucesso!")
 
-linha_divisoria()
-
-# 📋 Próximas reservas
-st.markdown("## 📋 Próximas Reservas")
-
-df = st.session_state.df_reservas.copy()
-
-# Ordenar por Data e Horário (do mais recente pro mais antigo)
-df = df.sort_values(by=["Data", "Horário"], ascending=True)
-
-# Mostrar as 5 últimas reservas (mais novas no topo)
-st.write(df.head(5))
