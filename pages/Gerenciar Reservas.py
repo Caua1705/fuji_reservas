@@ -7,7 +7,7 @@ if "df_reservas" not in st.session_state:
 
 df_reservas=st.session_state.df_reservas
 
-df_reservas["Data"]=pd.to_datetime(df_reservas["Data"],errors="coerce")
+df_reservas["Data"]=pd.to_datetime(df_reservas["Data"],errors="coerce").dt.date
 
 
 st.write(df_reservas)
