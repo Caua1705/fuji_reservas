@@ -7,6 +7,6 @@ def formatar_nova_linha(dict_dados,ordem_campos):
 
 def formatar_dados(df):
      df=df.copy()
-     df["Data"]=pd.to_datetime(df["Data"],format="%d/%m/%Y",errors="coerce")
+     df["Data"]=pd.to_datetime(df["Data"],format="%d/%m/%Y",errors="coerce").dt.date
      df["Número de Pessoas"]=pd.to_numeric(df["Número de Pessoas"],errors="coerce").fillna(0).astype(int)
      return df
