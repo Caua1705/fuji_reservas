@@ -40,8 +40,6 @@ with st.form("form_reserva", border=True):
             aba
         )
         st.session_state.df_reservas = carregar_dataframe()
-        st.toast("Reserva adicionada com sucesso! 🎉")
-        st.rerun()
 
 st.divider()
 
