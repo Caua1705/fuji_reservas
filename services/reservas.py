@@ -36,7 +36,7 @@ def exibir_resumo(df_reservas, ambiente):
 
     for horario in horarios_unicos:
         df_horario = df_reservas.loc[df_reservas["Horário"]==horario]
-        total_pessoas = df_horario.loc[df_horario["Número de Pessoas"]].sum()
+        total_pessoas = df_horario.loc[df_horario["Número de Pessoas"]].astype(int).sum()
         qtd_reservas = len(df_horario)
 
         with st.expander(f"🕒 {horario} – {qtd_reservas} reserva(s), {total_pessoas} pessoa(s)"):
