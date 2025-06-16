@@ -48,4 +48,4 @@ st.divider()
 # 📋 Últimas reservas
 st.markdown("## 📋 Últimas Reservas")
 
-st.write(st.session_state.df_reservas.head(5))
+st.write(st.session_state.df_reservas.tail(5))
