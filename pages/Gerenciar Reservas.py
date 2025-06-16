@@ -27,9 +27,9 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("🍽️ Ambiente Interno")
     df_ambiente_interno = reservas_dia.loc[reservas_dia["Área do Restaurante"]=="Interno"]
-    exibir_resumo(df_ambiente_interno, "Interno")
+    exibir_resumo(df_ambiente_interno, "Interno", filial)
 
 with col2:
     st.subheader("🌤️ Ambiente Externo")
     df_ambiente_externo = reservas_dia.loc[reservas_dia["Área do Restaurante"]=="Externo"]
-    exibir_resumo(df_ambiente_externo, "Externo")
+    exibir_resumo(df_ambiente_externo, "Externo", filial)
