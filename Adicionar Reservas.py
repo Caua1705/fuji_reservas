@@ -10,7 +10,6 @@ st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
 
 # Título
 st.title("🍣 Sistema de Reservas Fuji")
-st.caption("Gerencie suas reservas de forma simples, rápida e segura.")
 linha_divisoria()
 
 # Inicia planilha e dados
