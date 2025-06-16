@@ -9,10 +9,9 @@ import pandas as pd
 st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
 
 # Título principal
-st.title("🍣 Sistema de Reservas Fuji")
+st.markdown("## 🍣 Sistema de Reservas Fuji")
 st.caption("Gerencie suas reservas de forma simples, rápida e segura.")
-
-st.divider()
+st.markdown("---")
 
 # Inicializa planilha e dados
 if "aba" not in st.session_state:
@@ -23,26 +22,41 @@ if "df_reservas" not in st.session_state:
 
 aba = st.session_state.aba
 
-# Seção de formulário
-with st.expander("➕ Adicionar Nova Reserva", expanded=True):
-    st.subheader("Preencha os dados abaixo:")
-    with st.form("form_reserva"):
-        dict_dados = obter_dados_reserva()
-        enviado = st.form_submit_button("Adicionar Reserva")
+# 🔘 Formulário com layout em colunas
+with st.container():
+    with st.expander("➕ Adicionar Nova Reserva", expanded=True):
+        st.markdown("### 📝 Nova Reserva")
 
-        if enviado:
-            controlar_nova_reserva(
-                st.session_state.df_reservas,
-                dict_dados["Data"],
-                dict_dados,
-                aba
-            )
-            st.session_state.df_reservas = carregar_dataframe()
-            st.success("✅ Reserva adicionada com sucesso!")
-            st.balloons()
+        with st.form("form_reserva"):
+            # Obtem dados do form (assumindo que retorna um dicionário com os campos)
+            dict_dados = obter_dados_reserva()
 
-st.divider()
+            # Botão mais estilizado
+            enviado = st.form_submit_button("✅ Adicionar Reserva")
 
-# Mostrar últimas reservas (opcional)
-st.subheader("📋 Últimas reservas adicionadas")
-st.dataframe(st.session_state.df_reservas.tail(10), use_container_width=True)
+            if enviado:
+                controlar_nova_reserva(
+                    st.session_state.df_reservas,
+                    dict_dados["Data"],
+                    dict_dados,
+                    aba
+                )
+                st.session_state.df_reservas = carregar_dataframe()
+                st.toast("Reserva adicionada com sucesso! 🎉")
+                st.rerun()  # Atualiza a página após adicionar
+
+st.markdown("---")
+
+# 🗂 Últimas Reservas com estilo de cartão
+st.markdown("### 📋 Últimas Reservas")
+
+with st.container():
+    df = st.session_state.df_reservas.tail(10)
+
+    st.dataframe(
+        df.style.set_properties(**{
+            "text-align": "left",
+        }),
+        use_container_width=True,
+        height=400
+    )
