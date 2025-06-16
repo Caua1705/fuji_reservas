@@ -22,7 +22,7 @@ if "df_reservas" not in st.session_state:
 aba = st.session_state.aba
 
 # 📝 Formulário de nova reserva 
-st.markdown("## Nova Reserva")
+st.subheader("📝 Nova Reserva")
 
 with st.form("form_reserva", border=True):
     dict_dados = obter_dados_reserva()
