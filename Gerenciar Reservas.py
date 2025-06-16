@@ -49,7 +49,7 @@ st.divider()
 st.markdown("## 📋 Últimas Reservas")
 
 st.dataframe(
-    st.session_state.df_reservas.tail(10),
+    st.session_state.df_reservas.head(5),
     use_container_width=True,
     height=400
 )
