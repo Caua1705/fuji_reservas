@@ -23,7 +23,7 @@ with col2:
     st.markdown(f"""
     <p style='
         color: black;
-        font-size: 1.3rem;
+        font-size: 1.0rem;
         font-weight: bold;
         text-align: right;
         margin-bottom: 0;
