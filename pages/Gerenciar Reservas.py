@@ -22,10 +22,10 @@ with col1:
 with col2:
     st.markdown(f"""
     <p style='
-        color: #2c7be5;  /* azul vibrante */
-        font-size: 1.3rem; 
-        font-weight: bold; 
-        text-align: right; 
+        color: black;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-align: right;
         margin-bottom: 0;
     '>{data_selecionada.strftime('%d/%m/%Y')}</p>
     """, unsafe_allow_html=True)
