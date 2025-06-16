@@ -34,6 +34,6 @@ with col1:
     exibir_resumo(df_ambiente_interno, "Interno", filial)
 
 with col2:
-    st.markdown(f"### 🍽️ Ambiente Externo – {filial}")
+    st.markdown(f"### 🌤️ Ambiente Externo – {filial}")
     df_ambiente_externo = reservas_dia.loc[reservas_dia["Área do Restaurante"]=="Externo"]
     exibir_resumo(df_ambiente_externo, "Externo", filial)
