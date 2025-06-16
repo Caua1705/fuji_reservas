@@ -1,5 +1,6 @@
 import pandas as pd
-def filtrar_dataframe(df_reservas, data):
-    if isinstance(data, str):
-        data = pd.to_datetime(data, format="%d/%m/%Y", errors="coerce").date()
-    return df_reservas.loc[df_reservas["Data"] == data]
+def formatar_dados(df):
+    df = df.copy()
+    df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y", errors="coerce")  # manter datetime64
+    df["Número de Pessoas"] = pd.to_numeric(df["Número de Pessoas"], errors="coerce").fillna(0).astype(int)
+    return df
