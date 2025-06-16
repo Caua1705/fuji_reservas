@@ -54,8 +54,4 @@ df = st.session_state.df_reservas.copy()
 df = df.sort_values(by=["Data", "Horário"], ascending=False)
 
 # Mostrar as 5 últimas reservas (mais novas no topo)
-st.dataframe(
-    df.head(5)[["Data", "Nome", "Ambiente", "Horário"]],
-    use_container_width=True,
-    height=300
-)
+st.write(df.head(5))
