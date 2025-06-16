@@ -7,6 +7,7 @@ def obter_dados_reserva():
         data = st.date_input("📅 Data da Reserva *", value=datetime.today(), format="DD/MM/YYYY")
         nome = st.text_input("👤 Nome do Cliente *")
         quantidade_pessoas = st.number_input("👥 Número de Pessoas *", min_value=1, value=1)
+        filial=st.selectbox("🏢 Filial"["Aldeota","Cambeba"])
 
     with col2:
         horario = st.selectbox("⏰ Horário da Reserva *", [
@@ -15,8 +16,8 @@ def obter_dados_reserva():
         ])
         telefone = st.text_input("📞 Telefone (somente números) *")
         area = st.selectbox("🍽️ Área do Restaurante *", ["Interno", "Externo"])
+        observacoes = st.text_input("📝 Observações")
 
-    observacoes = st.text_input("📝 Observações")
 
     # Validação: retorna None se faltar campos
     if not nome.strip() or not telefone.strip() or quantidade_pessoas <= 0:
@@ -28,6 +29,7 @@ def obter_dados_reserva():
         "Nome": nome,
         "Telefone": telefone,
         "Número de Pessoas": quantidade_pessoas,
-        "Área": area,
+        "Filial":filial,
+        "Área do Restaurante": area,
         "Observações": observacoes
     }
