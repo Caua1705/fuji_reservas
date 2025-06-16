@@ -40,8 +40,6 @@ with st.form("form_reserva", border=True):
         )
         st.session_state.df_reservas = carregar_dataframe()
 
-st.divider()
-
 # 📋 Últimas reservas
 st.markdown("## 📋 Próximas Reservas")
 
