@@ -32,7 +32,7 @@ def exibir_resumo(df_reservas, ambiente, filial):
         st.info(f"Nenhuma reserva no ambiente {ambiente} para esta data.")
         return
 
-    df_agrupado_filial=df_reservas.loc[df_reservas["Filial"]==filial]
+    df_agrupado_filial=df_reservas.loc[df_reservas["Unidade"]==filial]
     horarios_unicos = df_agrupado_filial["Horário"].unique()
 
     for horario in horarios_unicos:

@@ -7,7 +7,7 @@ def carregar_dataframe():
 
     if not linhas or len(linhas) < 2:
         # Não há dados suficientes (só colunas ou nem isso)
-        return pd.DataFrame(columns=["Data", "Horário", "Nome", "Telefone", "Número de Pessoas", "Filial", "Área do Restaurante", "Observações"])
+        return pd.DataFrame(columns=["Data", "Horário", "Nome", "Telefone", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"])
 
     # Usa a primeira linha como cabeçalho
     colunas = linhas[0]
