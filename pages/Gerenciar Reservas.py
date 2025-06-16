@@ -4,27 +4,27 @@ from services.carregar_dados import carregar_dataframe
 
 st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
 
-# Carregar os dados
+# Carregar dados
 if "df_reservas" not in st.session_state:
     st.session_state.df_reservas = carregar_dataframe()
 
 df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
 
-# Título principal
-st.title("📅 Gerenciamento de Reservas")
-
-# Subtítulo
-st.markdown("Visualize rapidamente todas as reservas do restaurante organizadas por ambiente e horário.")
-
-# Seletor de data
+# Seletor de data (tem que vir antes para usar depois)
 data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
 
-# Reservas filtradas
-reservas_dia = df_reservas[df_reservas["Data"] == data_selecionada]
+# Cabeçalho com título e data no canto direito
+col1, col2 = st.columns([7, 1])
 
-# Cabeçalho para o dia selecionado
-st.header(f"📋 Reservas para {data_selecionada.strftime('%d/%m/%Y')}")
+with col1:
+    st.title("📅 Gerenciamento de Reservas")
+
+with col2:
+    st.markdown(f"<p style='color:gray; font-size:0.9rem; text-align:right;'>{data_selecionada.strftime('(%d/%m/%Y)')}</p>", unsafe_allow_html=True)
+
+# Filtrar reservas
+reservas_dia = df_reservas[df_reservas["Data"] == data_selecionada]
 
 # Colunas para ambientes
 col1, col2 = st.columns(2)
