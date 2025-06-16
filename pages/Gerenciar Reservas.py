@@ -20,7 +20,15 @@ with col1:
     data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
 
 with col2:
-    st.markdown(f"<p style='color:gray; font-size:0.9rem; text-align:right;'>{data_selecionada.strftime('(%d/%m/%Y)')}</p>", unsafe_allow_html=True)
+    st.markdown(f"""
+    <p style='
+        color: #2c7be5;  /* azul vibrante */
+        font-size: 1.3rem; 
+        font-weight: bold; 
+        text-align: right; 
+        margin-bottom: 0;
+    '>{data_selecionada.strftime('%d/%m/%Y')}</p>
+    """, unsafe_allow_html=True)
 
 # Filtrar reservas
 reservas_dia = df_reservas[df_reservas["Data"] == data_selecionada]
