@@ -1,4 +1,5 @@
 import pandas as pd
+import streamlit as st
 from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA
 from services.filtrar import filtrar_dataframe
 from utils.formatadores import formatar_dados
@@ -25,3 +26,26 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     registrar_reserva(nova_linha, aba)
     
     return df_atualizado
+
+def exibir_resumo(df_reservas, ambiente):
+    if df_reservas.empty:
+        st.info(f"Nenhuma reserva no ambiente {ambiente} para esta data.")
+        return
+
+    horarios_unicos = horario.unique()
+
+    for horario in horarios_unicos:
+        df_horario = df_reservas.loc[df_reservas["Hora"]==horario]
+        total_pessoas = df_horario.loc[df_horario["Número de Pessoas"].sum()]
+        qtd_reservas = len(df_horario)
+
+        with st.expander(f"🕒 {horario} – {qtd_reservas} reserva(s), {total_pessoas} pessoa(s)"):
+            for _, row in df_horario.iterrows():
+                st.markdown(f"""
+                <div style="border:1px solid #DDD; border-radius:10px; padding:10px; margin-bottom:6px; background-color:#f9f9f9;">
+                    <strong>👤 {row['Nome']}</strong><br>
+                    👥 {row['Número de Pessoas']} pessoas<br>
+                    📞 {row['Telefone']}<br>
+                    📝 {row['Observações'] or 'Sem observações'}
+                </div>
+                """, unsafe_allow_html=True)
