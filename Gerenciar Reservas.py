@@ -29,7 +29,6 @@ with st.form("form_reserva", border=True):
     # Se seu `obter_dados_reserva()` retorna os campos com st.input, ele será exibido aqui
     dict_dados = obter_dados_reserva()
 
-    st.markdown("___")
     enviado = st.form_submit_button("✅ Adicionar Reserva")
 
     if enviado:
