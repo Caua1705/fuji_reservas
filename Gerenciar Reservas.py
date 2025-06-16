@@ -48,9 +48,4 @@ st.divider()
 # 📋 Últimas reservas
 st.markdown("## 📋 Últimas Reservas")
 
-st.dataframe(
-    st.session_state.df_reservas.head(5),
-    use_container_width=True,
-    height=400
-)
-st.write(st.session_state.df_reservas)
+st.write(st.session_state.df_reservas.head(5))
