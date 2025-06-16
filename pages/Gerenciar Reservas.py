@@ -11,14 +11,13 @@ if "df_reservas" not in st.session_state:
 df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
 
-# Seletor de data (tem que vir antes para usar depois)
-data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
-
 # Cabeçalho com título e data no canto direito
 col1, col2 = st.columns([7, 1])
 
 with col1:
     st.title("📅 Gerenciamento de Reservas")
+    # Coloca o seletor de data aqui, logo após o título
+    data_selecionada = st.date_input("Selecione o dia para gerenciar as reservas", value=pd.to_datetime("today"))
 
 with col2:
     st.markdown(f"<p style='color:gray; font-size:0.9rem; text-align:right;'>{data_selecionada.strftime('(%d/%m/%Y)')}</p>", unsafe_allow_html=True)
