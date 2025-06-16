@@ -35,7 +35,7 @@ def exibir_resumo(df_reservas, ambiente):
     horarios_unicos = df_reservas["Horário"].unique()
 
     for horario in horarios_unicos:
-        df_horario = df_reservas.loc[df_reservas["Hora"]==horario]
+        df_horario = df_reservas.loc[df_reservas["Horário"]==horario]
         total_pessoas = df_horario.loc[df_horario["Número de Pessoas"].sum()]
         qtd_reservas = len(df_horario)
 
