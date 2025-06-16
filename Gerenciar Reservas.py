@@ -49,7 +49,7 @@ st.markdown("## 📋 Próximas Reservas")
 df = st.session_state.df_reservas.copy()
 
 # Ordenar por Data e Horário (do mais recente pro mais antigo)
-df = df.sort_values(by=["Data", "Horário"], ascending=True)
+df = df.sort_values(by=["Data", "Horário"], ascending=True).reset_index()
 
 # Mostrar as 5 últimas reservas (mais novas no topo)
 st.write(df.head(5))
