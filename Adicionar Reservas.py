@@ -24,21 +24,21 @@ aba = st.session_state.aba
 # 📝 Formulário de nova reserva 
 # st.subheader("📝 Nova Reserva")
 
-with st.form("form_reserva", border=True):
-    dict_dados = obter_dados_reserva()
+# with st.form("form_reserva", border=True):
+dict_dados = obter_dados_reserva()
 
-    enviado = st.form_submit_button("✅ Adicionar Reserva")
+enviado = st.button("✅ Adicionar Reserva")
 
-    if enviado:
-        if dict_dados is None:
-            st.warning("⚠️ Preencha todos os campos obrigatórios marcados com *.")
-        else:
-            controlar_nova_reserva(
-                st.session_state.df_reservas,
-                dict_dados["Data"],
-                dict_dados,
-                aba
-            )
-            st.session_state.df_reservas = carregar_dataframe()
-            st.success("✅ Reserva adicionada com sucesso!")
+if enviado:
+    if dict_dados is None:
+        st.warning("⚠️ Preencha todos os campos obrigatórios marcados com *.")
+    else:
+        controlar_nova_reserva(
+            st.session_state.df_reservas,
+            dict_dados["Data"],
+            dict_dados,
+            aba
+        )
+        st.session_state.df_reservas = carregar_dataframe()
+        st.success("✅ Reserva adicionada com sucesso!")
 
