@@ -16,8 +16,8 @@ def conectar_planilha():
     cliente = gspread.authorize(credenciais)  # já é suficiente
 
     planilha = cliente.open("reservas_fuji")
-    aba = planilha.sheet1
-    aba2=planilha.sheet2
-    aba3=planilha.sheet3
+    aba = planilha.get_worksheet(0)
+    aba2=planilha.get_worksheet(1)
+    aba3=planilha.get_worksheet(2)
 
     return aba,aba2,aba3
