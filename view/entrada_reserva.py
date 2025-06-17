@@ -31,7 +31,7 @@ def obter_dados_reserva():
         "Telefone": telefone,
         "Email":email,
         "Número de Pessoas": quantidade_pessoas,
-        "Filial":filial,
+        "Unidade":filial,
         "Área do Restaurante": area,
         "Observações": observacoes
     }
