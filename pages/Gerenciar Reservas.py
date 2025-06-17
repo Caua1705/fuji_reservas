@@ -17,7 +17,7 @@ df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.da
 
 # Título e botão de nova reserva
 st.markdown("## 🛎️ Gestão de Reservas")
-st.page_link("pages/Adicionar Reserva.py", label="➕ Nova Reserva", icon="📝")
+st.page_link("Adicionar Reserva", label="➕ Nova Reserva", icon="📝")
 linha_divisoria()
 
 # Sidebar - filtros
