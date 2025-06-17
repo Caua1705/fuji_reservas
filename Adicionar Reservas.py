@@ -9,8 +9,8 @@ from utils.estilo import linha_divisoria
 st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
 
 # Título
-st.title("🍣 Sistema de Reservas Fuji")
-linha_divisoria()
+st.title("📝 Nova Reserva")
+# linha_divisoria()
 
 # Inicia planilha e dados
 if "aba" not in st.session_state:
@@ -22,7 +22,7 @@ if "df_reservas" not in st.session_state:
 aba = st.session_state.aba
 
 # 📝 Formulário de nova reserva 
-st.subheader("📝 Nova Reserva")
+# st.subheader("📝 Nova Reserva")
 
 with st.form("form_reserva", border=True):
     dict_dados = obter_dados_reserva()
