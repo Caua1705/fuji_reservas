@@ -2,7 +2,7 @@ import pandas as pd
 from data.conexao import conectar_planilha
 
 def carregar_todas_as_reservas():
-    aba = conectar_planilha()
+    aba,_,_ = conectar_planilha()
     linhas = aba.get_all_values()
 
     if not linhas or len(linhas) < 2:
