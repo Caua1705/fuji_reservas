@@ -37,10 +37,10 @@ with col1:
     st.markdown(f"### 🍽️ Ambiente Interno – {filial}")
     df_ambiente_interno = reservas_dia.loc[reservas_dia["Área do Restaurante"] == "Interno"]
     st.markdown(f"**Total de reservas:** {len(df_ambiente_interno)}")
-    exibir_resumo(df_ambiente_interno, "Interno", filial)
+    exibir_resumo(df_ambiente_interno, "Interno", filial, data_selecionada)
 
 with col2:
     st.markdown(f"### 🌤️ Ambiente Externo – {filial}")
     df_ambiente_externo = reservas_dia.loc[reservas_dia["Área do Restaurante"] == "Externo"]
     st.markdown(f"**Total de reservas:** {len(df_ambiente_externo)}")
-    exibir_resumo(df_ambiente_externo, "Externo", filial)
+    exibir_resumo(df_ambiente_externo, "Externo", filial, data_selecionada)
