@@ -7,3 +7,7 @@ def filtrar_dataframe(df_reservas, data):
 
 def filtrar_df_reservas(df,data):
      return df.loc[df["Data"] == data]
+    
+
+def filtrar_por_filial(df,filial):
+    return df.loc[df["Unidade"]==filial]

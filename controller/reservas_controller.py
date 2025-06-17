@@ -1,6 +1,7 @@
 import streamlit as st
 from services.reservas import processar_nova_reserva
 from services.email import enviar_email_cliente
+from services.agrupar import agrupar_por_dia
 
 def controlar_nova_reserva(df_reservas, data, dict_dados, aba):
     try:
@@ -12,3 +13,6 @@ def controlar_nova_reserva(df_reservas, data, dict_dados, aba):
     except ValueError as e:
         st.error(e)  # Exibe a mensagem da exceção (ex: excesso de reservas)
         st.stop() 
+
+def controlar_reservas_por_dia(df_reservas,filial,aba2,aba3):
+    agrupar_por_dia(df_reservas,filial,aba2,aba3)

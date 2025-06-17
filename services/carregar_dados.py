@@ -1,8 +1,8 @@
 import pandas as pd
 from data.conexao import conectar_planilha
 
-def carregar_dataframe():
-    aba = conectar_planilha()
+def carregar_todas_as_reservas():
+    aba,_ = conectar_planilha()
     linhas = aba.get_all_values()
 
     if not linhas or len(linhas) < 2:
@@ -15,3 +15,4 @@ def carregar_dataframe():
 
     return pd.DataFrame(dados, columns=colunas)
     
+

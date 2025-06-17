@@ -17,5 +17,7 @@ def conectar_planilha():
 
     planilha = cliente.open("reservas_fuji")
     aba = planilha.sheet1
+    aba2=planilha.sheet2
+    aba3=planilha.sheet3
 
-    return aba
+    return aba,aba2,aba3

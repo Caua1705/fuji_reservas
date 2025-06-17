@@ -1,10 +1,12 @@
 import pandas as pd
 import streamlit as st
 from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA
-from services.filtrar import filtrar_dataframe
+from services.filtrar import filtrar_dataframe,filtrar_por_filial
+from services.agrupar import agrupar_por_dia
 from utils.formatadores import formatar_dados
 from services.validacoes import validar_reserva
-from model.adicionar import registrar_reserva
+from model.adicionar import registrar_reserva,registrar_reservas_por_dia
+
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
     # Formata a nova linha com os dados fornecidos
@@ -26,6 +28,13 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     registrar_reserva(nova_linha, aba)
     
     return df_atualizado
+
+def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
+    df_filtrado=filtrar_por_filial(df_reservas,filial)
+    df_agrupado=agrupar_por_dia(df_filtrado)
+    linhas=df_agrupado.values.tolist()
+    registrar_reservas_por_dia(linhas,filial,aba2,aba3)
+
 
 def exibir_resumo(df_reservas, ambiente, filial):
     df_agrupado_filial=df_reservas.loc[df_reservas["Unidade"]==filial]
