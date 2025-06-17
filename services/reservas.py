@@ -49,6 +49,7 @@ def exibir_resumo(df_reservas, ambiente, filial):
                     <strong>👤 {row['Nome']}</strong><br>
                     👥 {row['Número de Pessoas']} pessoas<br>
                     📞 {row['Telefone']}<br>
+                    ✉️ {row['Email']}<br>
                     📝 {row['Observações'] or 'Sem observações'}
                 </div>
                 """, unsafe_allow_html=True)
