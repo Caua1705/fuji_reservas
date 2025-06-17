@@ -4,6 +4,6 @@ def registrar_reserva(nova_linha,aba):
 
 def registrar_reservas_por_dia(linhas,filial,aba2,aba3):
     if filial=="Aldeota":
-        aba2.append_row(linhas)
+        aba2.append_rows(linhas)
     elif filial=="Cambeba":
-        aba3.append_row(linhas)
+        aba3.append_rows(linhas)
