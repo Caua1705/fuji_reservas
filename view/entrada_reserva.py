@@ -16,7 +16,7 @@ def obter_dados_reserva():
         ])
         telefone = st.text_input("📞 Telefone (somente números) *")
         area = st.selectbox("🍽️ Área do Restaurante *", ["Interno", "Externo"])
-        email = st.selectbox("✉️ E-mail para confirmação *")
+        email = st.text_input("✉️ E-mail para confirmação *")
     observacoes = st.text_input("📝 Observações")
 
 
