@@ -2,7 +2,7 @@ import streamlit as st
 from data.conexao import conectar_planilha
 from view.entrada_reserva import obter_dados_reserva
 from services.carregar_dados import carregar_todas_as_reservas
-from controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
+from controller.reservas_controller import controlar_nova_reserva
 
 # Config da página
 st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
