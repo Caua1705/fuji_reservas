@@ -33,17 +33,11 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
 
 def processar_reservas_agrupadas(df_reservas, filial, aba2, aba3):
     df_filtrado = filtrar_por_filial(df_reservas, filial)
-    
-    # Checagem simples pra evitar erro
-    if df_filtrado is None:
-        st.error("Erro: df_filtrado é None")
-        return
-    if not isinstance(df_filtrado, pd.DataFrame):
-        st.error(f"Erro: df_filtrado não é DataFrame, é {type(df_filtrado)}")
-        return
     if df_filtrado.empty:
-        st.warning("Aviso: Não há reservas para essa filial.")
+        # Evita passar DataFrame vazio e quebrar na função de agrupamento
         return
+    df_agrupado = agrupar_por_dia(df_filtrado)
+    # resto do código...
     
     df_agrupado = agrupar_por_dia(df_filtrado)
     st.write(df_agrupado)

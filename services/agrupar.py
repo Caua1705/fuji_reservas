@@ -1,5 +1,5 @@
 import pandas as pd
-import stramlti as st
+import streamlit as st
 def agrupar_por_dia(df):
     # Converte para datetime, força erros para NaT
     df = df.copy()
