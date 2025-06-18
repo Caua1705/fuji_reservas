@@ -15,5 +15,5 @@ def formatar_linhas_agrupadas(df_agrupado):
 
 def formatar_data(df,coluna_data):
      df[coluna_data] = pd.to_datetime(df[coluna_data], errors="coerce").dt.date
-     df[coluna_data]=df[coluna_data].apply(lambda x:x.strftime())
+     df[coluna_data]=df[coluna_data].apply(lambda x:x.strftime("%d/%m/%Y"))
      return df
