@@ -34,8 +34,8 @@ def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
     df_filtrado=filtrar_por_filial(df_reservas,filial)
     df_agrupado=agrupar_por_dia(df_filtrado)
     df_agrupado["Data"]=df_agrupado["Data"].apply(lambda x:x.strftime("%d,%m,%Y"))
+    st.write(df_agrupado)
     linhas = formatar_linhas_agrupadas(df_agrupado)
-    linhas = [[str(item) for item in linha] for linha in df_agrupado.values.tolist()]
     registrar_reservas_por_dia(linhas,filial,aba2,aba3)
 
 
