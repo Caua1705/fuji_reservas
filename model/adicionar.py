@@ -8,5 +8,5 @@ def registrar_reservas_por_dia(linhas, filial, aba2, aba3):
     cabecalho = aba.get_all_values()[0]  # pega primeira linha (cabeçalho)
     aba.clear()
     aba.append_row(cabecalho)
-    aba.append_rows(linhas)
+    aba.append_rows(linhas[1:])
     
