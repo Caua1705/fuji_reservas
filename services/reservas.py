@@ -30,13 +30,25 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     
     return df_atualizado
 
-def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
-    df_filtrado=filtrar_por_filial(df_reservas,filial)
-    df_agrupado=agrupar_por_dia(df_filtrado)
+
+def processar_reservas_agrupadas(df_reservas, filial, aba2, aba3):
+    df_filtrado = filtrar_por_filial(df_reservas, filial)
+    
+    # Checagem simples pra evitar erro
+    if df_filtrado is None:
+        st.error("Erro: df_filtrado é None")
+        return
+    if not isinstance(df_filtrado, pd.DataFrame):
+        st.error(f"Erro: df_filtrado não é DataFrame, é {type(df_filtrado)}")
+        return
+    if df_filtrado.empty:
+        st.warning("Aviso: Não há reservas para essa filial.")
+        return
+    
+    df_agrupado = agrupar_por_dia(df_filtrado)
     st.write(df_agrupado)
     linhas_agrupadas = formatar_linhas_agrupadas(df_agrupado)
-    registrar_reservas_por_dia(linhas_agrupadas,filial,aba2,aba3)
-
+    registrar_reservas_por_dia(linhas_agrupadas, filial, aba2, aba3)
 
 def exibir_resumo(df_reservas, ambiente, filial):
     df_agrupado_filial=df_reservas.loc[df_reservas["Unidade"]==filial]
