@@ -1,5 +1,6 @@
 import pandas as pd
 from data.conexao import conectar_planilha
+from utils.formatadores import formatar_dados
 
 def carregar_todas_as_reservas():
     aba,_,_ = conectar_planilha()
@@ -7,12 +8,15 @@ def carregar_todas_as_reservas():
 
     if not linhas or len(linhas) < 2:
         # Não há dados suficientes (só colunas ou nem isso)
-        return pd.DataFrame(columns=["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"])
-
+        df = pd.DataFrame(columns=["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"])
+        df = formatar_dados(df)
+        
     # Usa a primeira linha como cabeçalho
     colunas = linhas[0]
     dados = linhas[1:]
 
-    return pd.DataFrame(dados, columns=colunas)
+    df = pd.DataFrame(dados, columns=colunas)
+    df = formatar_dados(df)
+    return df
     
 

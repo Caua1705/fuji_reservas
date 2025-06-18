@@ -38,7 +38,6 @@ with st.form("form_reserva", border=True):
                 dict_dados,
                 aba
             )
-            st.session_state.df_reservas = carregar_todas_as_reservas()
             controlar_reservas_por_dia(st.session_state.df_reservas,dict_dados["Unidade"],aba2,aba3)
             st.success("✅ Reserva adicionada com sucesso!")
 

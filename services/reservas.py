@@ -3,23 +3,24 @@ import streamlit as st
 from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA
 from services.filtrar import filtrar_dataframe,filtrar_por_filial
 from services.agrupar import agrupar_por_dia
-from utils.formatadores import formatar_dados
+from utils.formatadores import formatar_dados,formatar_linhas_agrupadas
 from services.validacoes import validar_reserva
 from model.adicionar import registrar_reserva,registrar_reservas_por_dia
 
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
-    # Formata a nova linha com os dados fornecidos
+    # Formata a nova linha para adicionar na planilha
     nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)
+
+    #Cria um DataFrame com a nova linha
     df_nova_linha = pd.DataFrame([nova_linha], columns=df_reservas.columns)
     df_nova_linha = formatar_dados(df_nova_linha)
 
     # Cria o DataFrame atualizado simulando a adição
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
-    df_atualizado = formatar_dados(df_atualizado)
-
+  
     # Filtra as reservas do mesmo dia para validação
-    df_filtrado = filtrar_dataframe(df_atualizado, pd.to_datetime(data, format="%d/%m/%Y").date())
+    df_filtrado = filtrar_dataframe(df_atualizado, data)
     
     # Valida se o total de reservas para o dia excede o máximo
     validar_reserva(df_filtrado, maximo_reservas)
@@ -32,9 +33,8 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
 def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
     df_filtrado=filtrar_por_filial(df_reservas,filial)
     df_agrupado=agrupar_por_dia(df_filtrado)
-    df_agrupado = formatar_dados(df_agrupado)
-    linhas = [[str(item) for item in linha] for linha in df_agrupado.values.tolist()]
-    registrar_reservas_por_dia(linhas,filial,aba2,aba3)
+    linhas_agrupadas = formatar_linhas_agrupadas(df_agrupado)
+    registrar_reservas_por_dia(linhas_agrupadas,filial,aba2,aba3)
 
 
 def exibir_resumo(df_reservas, ambiente, filial):
