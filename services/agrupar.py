@@ -1,6 +1,5 @@
 import pandas as pd
 def agrupar_por_dia(df):
-    df_agrupado = df.groupby("Data")["Número de Pessoas"].sum().reset_index()
-    df_agrupado["Data"] = pd.to_datetime(df_agrupado["Data"], errors="coerce")
-    df_agrupado["Data"] = df_agrupado["Data"].dt.date
+    df["Data"] = pd.to_datetime(df["Data"], errors="coerce").dt.date
+    df_agrupado = df.groupby("Data", as_index=False)["Número de Pessoas"].sum()
     return df_agrupado
