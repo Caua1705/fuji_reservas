@@ -14,5 +14,6 @@ def formatar_linhas_agrupadas(df_agrupado):
      return [[str(item)for item in linha]for linha in df_agrupado.values.tolist()]
 
 def formatar_data(df,coluna_data):
+     df[coluna_data] = pd.to_datetime(df[coluna_data], errors="coerce")
      df[coluna_data]=df[coluna_data].apply(lambda x:x.strftime())
      return df
