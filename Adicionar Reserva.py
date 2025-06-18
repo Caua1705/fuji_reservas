@@ -16,7 +16,6 @@ if "aba" not in st.session_state or "aba2" not in st.session_state or "aba3" not
 
 if "df_reservas" not in st.session_state:
     st.session_state.df_reservas = carregar_todas_as_reservas()
-    st.write(st.session_state.df_reservas)  
 
 aba = st.session_state.aba
 aba2 = st.session_state.aba2
@@ -42,5 +41,6 @@ with st.form("form_reserva", border=True):
             st.session_state.df_reservas = carregar_todas_as_reservas()
             # controlar_reservas_por_dia(st.session_state.df_reservas,dict_dados["Unidade"],aba2,aba3)
             st.success("✅ Reserva adicionada com sucesso!")
+st.write(st.session_state.df_reservas)  
 
  
