@@ -2,7 +2,7 @@ import streamlit as st
 from data.conexao import conectar_planilha
 from view.entrada_reserva import obter_dados_reserva
 from services.carregar_dados import carregar_todas_as_reservas
-from controller.reservas_controller import controlar_nova_reserva
+from controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
 
 # Config da página
 st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
@@ -39,8 +39,7 @@ with st.form("form_reserva", border=True):
                 aba
             )
             st.session_state.df_reservas = carregar_todas_as_reservas()
-            # controlar_reservas_por_dia(st.session_state.df_reservas,dict_dados["Unidade"],aba2,aba3)
+            controlar_reservas_por_dia(st.session_state.df_reservas,dict_dados["Unidade"],aba2,aba3)
             st.success("✅ Reserva adicionada com sucesso!")
-st.write(st.session_state.df_reservas)  
 
  

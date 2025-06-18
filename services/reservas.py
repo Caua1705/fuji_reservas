@@ -30,12 +30,13 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     registrar_reserva(nova_linha, aba)
     return df_atualizado
 
-# def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
-#     df_filtrado=filtrar_por_filial(df_reservas,filial)
-#     df_agrupado=agrupar_por_dia(df_filtrado)
-#     df_agrupado["Data"]=df_agrupado["Data"].apply(lambda x:x.strftime("%d,%m,%Y"))
-#     linhas = formatar_linhas_agrupadas(df_agrupado)
-#     registrar_reservas_por_dia(linhas,filial,aba2,aba3)
+def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
+    df_filtrado=filtrar_por_filial(df_reservas,filial)
+    df_agrupado=agrupar_por_dia(df_filtrado)
+    st.write(df_agrupado)
+    df_agrupado["Data"]=df_agrupado["Data"].apply(lambda x:x.strftime("%d,%m,%Y"))
+    linhas = formatar_linhas_agrupadas(df_agrupado)
+    registrar_reservas_por_dia(linhas,filial,aba2,aba3)
 
 
 def exibir_resumo(df_reservas, ambiente, filial):
