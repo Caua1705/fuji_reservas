@@ -1,9 +1,9 @@
-DICIONARIO_DIAS={
-0:"segunda_feira",
+DICIONARIO-DIAS={
+0:"segunda-feira",
 1:"terça-feira",
-2:"quarta_feira",
-3:"quinta_feira",
-4:"sexta_feira",
+2:"quarta-feira",
+3:"quinta-feira",
+4:"sexta-feira",
 5:"sábado",
 6:"domingo",
 }
