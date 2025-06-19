@@ -1,0 +1,9 @@
+DICIONARIO_DIAS={
+0:"segunda_feira",
+1:"terça-feira",
+2:"quarta_feira",
+3:"quinta_feira",
+4:"sexta_feira",
+5:"sábado",
+6:"domingo",
+}
