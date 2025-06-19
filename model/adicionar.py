@@ -5,8 +5,8 @@ def registrar_reserva(nova_linha,aba):
 def registrar_reservas_por_dia(linhas, filial, aba2, aba3):
     abas={"Aldeota":aba2,"Cambeba":aba3}
     aba=abas[filial]
-    cabecalho = aba.get_all_values()[0]  # pega primeira linha (cabeçalho)
-    aba.clear()
-    aba.append_row(cabecalho)
-    aba.append_rows(linhas)
+    # Limpa só as colunas A:C a partir da linha 2
+    aba.batch_clear(['A2:C'])
+    # Atualiza dados a partir da célula A2, de acordo com a qunatidade de colunas continda em linhas
+    aba.update('A2', linhas)
     
