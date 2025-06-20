@@ -19,6 +19,7 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     st.write(df_atualizado)
     # Filtra as reservas do mesmo dia para validação
     df_filtrado = filtrar_dataframe(df_atualizado, data)
+    st.write(df_filtrado)
     # Valida se o total de reservas para o dia excede o máximo
     validar_reserva(df_filtrado, maximo_reservas)
     # Registra na planilha
