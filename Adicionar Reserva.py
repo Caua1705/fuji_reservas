@@ -20,8 +20,10 @@ with st.form("form_reserva", border=True):
 
     enviado = st.form_submit_button("✅ Adicionar Reserva")
 
+
     if enviado:
-        if dict_dados is None:
+        campos_obrigatorios = ["Nome", "Email", "Data", "Horário", "Unidade"]
+        if not all([dict_dados.get(campo) for campo in campos_obrigatorios]):
             st.warning("⚠️ Preencha todos os campos obrigatórios marcados com *.")
         else:
             try:
@@ -37,7 +39,6 @@ with st.form("form_reserva", border=True):
                                             aba2,
                                             aba3)
                 st.success(f"✅ **Reserva para {dict_dados['Nome']} adicionada com sucesso!**")
-                st.info("📅 Os dados foram salvos na planilha.")
                 st.info("📩 Um e-mail de confirmação foi enviado ao cliente.")
             # Excesso de reservas
             except ValueError as e:
