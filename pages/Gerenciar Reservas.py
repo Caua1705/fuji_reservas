@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from services.carregar_dados import carregar_dataframe
+from services.carregar_dados import carregar_todas_as_reservas
 from services.filtrar import filtrar_df_reservas
 from services.reservas import exibir_resumo
 from utils.estilo import linha_divisoria
@@ -10,7 +10,7 @@ st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
 
 # Carregar dados
 if "df_reservas" not in st.session_state:
-    st.session_state.df_reservas = carregar_dataframe()
+    st.session_state.df_reservas = carregar_todas_as_reservas()
 
 df_reservas = st.session_state.df_reservas
 df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
