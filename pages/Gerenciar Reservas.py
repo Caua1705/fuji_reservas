@@ -16,10 +16,11 @@ st.markdown("[📂 Abrir Planilha de Reservas](https://docs.google.com/spreadshe
 linha_divisoria()
 
 # Sidebar - filtros
-with st.sidebar:
+col_filtros1, col_filtros2 = st.columns(2)
+with col_filtros1:
     data_selecionada = st.date_input("📅 Selecione a data", datetime.today().date(), format="DD/MM/YYYY")
+with col_filtros2:
     filial = st.selectbox("🏢 Filial", ["Aldeota", "Cambeba"])
-
 # Mostrar data selecionada
 st.markdown(f"**📅 Data selecionada:** {data_selecionada.strftime('%d/%m/%Y')}")
 
