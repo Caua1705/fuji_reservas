@@ -6,9 +6,19 @@ def formatar_nova_linha(dict_dados,ordem_campos):
      return [str(dict_dados[campo]) for campo in ordem_campos]
 
 def formatar_dados(df):
-     df["Data"]=pd.to_datetime(df["Data"],format="%d/%m/%Y",errors="coerce")
-     df["Número de Pessoas"]=pd.to_numeric(df["Número de Pessoas"],errors="coerce").fillna(0).astype(int)
-     return df
+    df.columns = df.columns.str.strip()  # remove espaços
+
+    if "Data" in df.columns:
+        df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y", errors="coerce")
+    else:
+        print("⚠️ Coluna 'Data' não encontrada")
+
+    if "Número de Pessoas" in df.columns:
+        df["Número de Pessoas"] = pd.to_numeric(df["Número de Pessoas"], errors="coerce").fillna(0).astype(int)
+    else:
+        print("⚠️ Coluna 'Número de Pessoas' não encontrada")
+
+    return df
 
 def formatar_linhas_agrupadas(df_agrupado):
      return [[str(item)for item in linha]for linha in df_agrupado.values.tolist()]
