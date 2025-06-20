@@ -16,12 +16,8 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     # Cria o DataFrame atualizado simulando a adição
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
     # df_atualizado=converter_datav(df_atualizado)
-    st.write(df_atualizado)
     # Filtra as reservas do mesmo dia para validação
     df_filtrado = filtrar_dataframe(df_atualizado, data)
-    st.write(df_filtrado)
-    st.write(data)
-    st.write(type(data))
     
     # Valida se o total de reservas para o dia excede o máximo
     validar_reserva(df_filtrado, maximo_reservas)
