@@ -8,7 +8,14 @@ import smtplib
 st.set_page_config(page_title="🍣 Fuji Lounge – Reservas", layout="wide")
 
 # Título
-st.title("📝 Nova Reserva")
+st.markdown(
+    """
+    <div style='text-align:center; padding: 1rem 0'>
+        <h2 style='margin-bottom:0.2em;'>📝 Nova Reserva</h2>
+        <p style='color:gray; font-size:1.1em;'>Preencha o formulário abaixo para registrar uma nova reserva</p>
+    </div>
+    """, unsafe_allow_html=True
+)
 
 # Inicializa Planilha e Dados
 aba,aba2,aba3=inicializar_abas_planilha()
