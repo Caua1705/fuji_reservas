@@ -27,14 +27,13 @@ with col2:
         unsafe_allow_html=True
     )
 
-# Sidebar - filtros
+# Filtros
 col_filtros1, col_filtros2 = st.columns(2)
 with col_filtros1:
     data_selecionada = st.date_input("📅 Selecione a data", datetime.today().date(), format="DD/MM/YYYY")
 with col_filtros2:
     filial = st.selectbox("🏢 Filial", ["Aldeota", "Cambeba"])
-# Mostrar data selecionada
-# st.markdown(f"**📅 Data selecionada:** {data_selecionada.strftime('%d/%m/%Y')}")
+linha_divisoria()
 
 # Filtrar reservas por data
 reservas_dia = filtrar_df_reservas(df_reservas, data_selecionada)
