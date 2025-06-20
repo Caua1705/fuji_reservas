@@ -1,5 +1,5 @@
 def filtrar_dataframe(df_reservas, data):
-    return df_reservas.loc[df_reservas["Data"] == data]
+    return df_reservas.loc[df_reservas["Data"].dt.date == data]
 
 def filtrar_df_reservas(df,data):
      return df.loc[df["Data"] == data]
