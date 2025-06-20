@@ -1,9 +1,8 @@
 import pandas as pd
 import streamlit as st
-from utils.formatadores import formatar_nova_linha, ORDEM_CAMPOS_RESERVA, formatar_data
+from utils.formatadores import formatar_nova_linha,ORDEM_CAMPOS_RESERVA,formatar_data,formatar_dados,formatar_linhas_agrupadas,converter_data
 from services.filtrar import filtrar_dataframe,filtrar_por_filial
 from services.agrupar import agrupar_por_dia
-from utils.formatadores import formatar_dados,formatar_linhas_agrupadas
 from services.validacoes import validar_reserva
 from model.adicionar import registrar_reserva,registrar_reservas_por_dia
 
@@ -16,7 +15,7 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     df_nova_linha = formatar_dados(df_nova_linha)
     # Cria o DataFrame atualizado simulando a adição
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
-    df_atualizado=formatar_dados(df_atualizado)
+    df_atualizado=converter_data(df_atualizado,"Data")
     st.write(df_atualizado)
     # Filtra as reservas do mesmo dia para validação
     df_filtrado = filtrar_dataframe(df_atualizado, data)
