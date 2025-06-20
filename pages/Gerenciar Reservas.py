@@ -13,7 +13,7 @@ if "df_reservas" not in st.session_state:
     st.session_state.df_reservas = carregar_todas_as_reservas()
 
 df_reservas = st.session_state.df_reservas
-df_reservas["Data"] = pd.to_datetime(df_reservas["Data"], errors="coerce").dt.date
+df_reservas["Data"] = df_reservas["Data"].dt.date
 
 # Título e botão de nova reserva
 st.markdown("## 🛎️ Gestão de Reservas")
