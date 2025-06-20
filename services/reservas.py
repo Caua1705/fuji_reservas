@@ -11,20 +11,16 @@ from model.adicionar import registrar_reserva,registrar_reservas_por_dia
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
     # Formata a nova linha para adicionar na planilha
     nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)
-
     #Cria um DataFrame com a nova linha
     df_nova_linha = pd.DataFrame([nova_linha], columns=df_reservas.columns)
     df_nova_linha = formatar_dados(df_nova_linha)
-
     # Cria o DataFrame atualizado simulando a adição
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
-  
+    st.write(df_atualizado)
     # Filtra as reservas do mesmo dia para validação
     df_filtrado = filtrar_dataframe(df_atualizado, data)
-    
     # Valida se o total de reservas para o dia excede o máximo
     validar_reserva(df_filtrado, maximo_reservas)
-
     # Registra na planilha
     registrar_reserva(nova_linha, aba)
     return df_atualizado
