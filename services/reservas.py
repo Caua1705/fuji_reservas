@@ -16,6 +16,7 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=5
     df_nova_linha = formatar_dados(df_nova_linha)
     # Cria o DataFrame atualizado simulando a adição
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
+    df_atualizado=formatar_dados(df_atualizado)
     st.write(df_atualizado)
     # Filtra as reservas do mesmo dia para validação
     df_filtrado = filtrar_dataframe(df_atualizado, data)
