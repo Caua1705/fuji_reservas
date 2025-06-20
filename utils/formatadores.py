@@ -18,5 +18,5 @@ def formatar_data(df,coluna_data):
      df[coluna_data]=df[coluna_data].apply(lambda x:x.strftime("%d/%m/%Y"))
      return df
 
-def converter_data(df,coluna_data):
-     df[coluna_data]=df[coluna_data].dt.strftime("%d/%m/%Y")
+# def converter_data(df,coluna_data):
+#      df[coluna_data]=df[coluna_data].dt.strftime("%d/%m/%T")
