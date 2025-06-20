@@ -13,9 +13,7 @@ if "df_reservas" not in st.session_state:
     st.session_state.df_reservas = carregar_todas_as_reservas()
 
 df_reservas = st.session_state.df_reservas
-st.write(df_reservas)
 df_reservas["Data"] = df_reservas["Data"].dt.date
-st.write(df_reservas)
 
 # Título e botão de nova reserva
 st.markdown("## 🛎️ Gestão de Reservas")
@@ -31,6 +29,7 @@ st.markdown(f"**📅 Data selecionada:** {data_selecionada.strftime('%d/%m/%Y')}
 
 # Filtrar reservas
 reservas_dia = filtrar_df_reservas(df_reservas, data_selecionada)
+st.write(reservas_dia)
 
 # Colunas para ambientes
 col1, col2 = st.columns(2)
