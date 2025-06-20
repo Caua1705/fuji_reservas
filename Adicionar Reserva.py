@@ -1,8 +1,8 @@
 import streamlit as st
-from data.conexao import conectar_planilha
+from services.inicializacao import inicializar_abas_planilha,inicializar_dados
 from view.entrada_reserva import obter_dados_reserva
-from services.carregar_dados import carregar_todas_as_reservas
 from controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
+import smtplib
 
 # Config da página
 st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
@@ -10,19 +10,11 @@ st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
 # Título
 st.title("📝 Nova Reserva")
 
-# Inicia planilha e dados
-if "aba" not in st.session_state or "aba2" not in st.session_state or "aba3" not in st.session_state:
-    st.session_state.aba,st.session_state.aba2,st.session_state.aba3 = conectar_planilha()
-
-if "df_reservas" not in st.session_state:
-    st.session_state.df_reservas = carregar_todas_as_reservas()
-
-aba = st.session_state.aba
-aba2 = st.session_state.aba2
-aba3 = st.session_state.aba3
+# Inicializa Planilha e Dados
+aba,aba2,aba3=inicializar_abas_planilha()
+df_reservas=inicializar_dados()
 
 # 📝 Formulário de nova reserva 
-
 with st.form("form_reserva", border=True):
     dict_dados = obter_dados_reserva()
 
@@ -32,14 +24,27 @@ with st.form("form_reserva", border=True):
         if dict_dados is None:
             st.warning("⚠️ Preencha todos os campos obrigatórios marcados com *.")
         else:
-            controlar_nova_reserva(
-                st.session_state.df_reservas,
-                dict_dados["Data"],
-                dict_dados,
-                aba
+            try:
+                df_atualizado = controlar_nova_reserva(
+                    st.session_state.df_reservas,
+                    dict_dados["Data"],
+                    dict_dados,
+                    aba
+                )
+                st.session_state.df_reservas=df_atualizado
+                controlar_reservas_por_dia(st.session_state.df_reservas,
+                                            dict_dados["Unidade"],
+                                            aba2,
+                                            aba3)
+                st.success(
+                "✅ **Reserva adicionada com sucesso!**\n\n"
+                "📅 Os dados foram salvos na planilha.\n"
+                "📩 Um e-mail de confirmação foi enviado ao cliente."
             )
-            st.session_state.df_reservas = carregar_todas_as_reservas()
-            controlar_reservas_por_dia(st.session_state.df_reservas,dict_dados["Unidade"],aba2,aba3)
-            st.success("✅ Reserva adicionada com sucesso!")
-
- 
+            # Excesso de reservas
+            except ValueError as e:
+                st.error(e)  
+            # Não foi possível enviar o email
+            except smtplib.SMTPException as e:
+                st.error(e)
+        

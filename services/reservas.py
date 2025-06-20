@@ -32,7 +32,6 @@ def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
     linhas = formatar_linhas_agrupadas(df_agrupado)
     registrar_reservas_por_dia(linhas,filial,aba2,aba3)
 
-
 def exibir_resumo(df_reservas, ambiente):
     if df_reservas.empty:
         st.info(f"Nenhuma reserva no ambiente **{ambiente}** para esta data.")
