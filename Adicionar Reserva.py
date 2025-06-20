@@ -5,7 +5,7 @@ from controller.reservas_controller import controlar_nova_reserva,controlar_rese
 import smtplib
 
 # Config da página
-st.set_page_config(page_title="Sistema de Reservas Fuji", layout="wide")
+st.set_page_config(page_title="🍣 Fuji Lounge – Reservas", layout="wide")
 
 # Título
 st.title("📝 Nova Reserva")
