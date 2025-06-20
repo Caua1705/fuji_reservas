@@ -5,7 +5,6 @@ def obter_dados_reserva():
     col1, col2 = st.columns(2)
     with col1:
         data = st.date_input("📅 Data da Reserva *", value=datetime.today(), format="DD/MM/YYYY")
-        data_formatada=data.strftime("%d/%m/%Y")
         nome = st.text_input("👤 Nome do Cliente *")
         quantidade_pessoas = st.number_input("👥 Número de Pessoas *", min_value=1, value=1)
         filial=st.selectbox("🏢 Unidade",["Aldeota","Cambeba"])
@@ -26,7 +25,7 @@ def obter_dados_reserva():
         return None
 
     return {
-        "Data": data_formatada,
+        "Data": data,
         "Horário": horario,
         "Nome": nome,
         "Telefone": telefone,
