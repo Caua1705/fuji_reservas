@@ -8,7 +8,7 @@ def formatar_nova_linha(dict_dados, ordem_campos):
     return lista_nova_linha
 
 def formatar_dados(df):
-     df["Data"]=pd.to_datetime(df["Data"],errors="coerce")
+     df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y", errors="coerce")
      df["Número de Pessoas"]=pd.to_numeric(df["Número de Pessoas"],errors="coerce").fillna(0).astype(int)
      return df
 
