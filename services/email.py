@@ -3,8 +3,6 @@ import smtplib
 
 def enviar_email_cliente(email_origem, email_cliente, senha_app, nome_cliente, data, hora, unidade):
     try:
-        if not email_cliente or "@" not in email_cliente:
-            raise smtplib.SMTPException("❌ Endereço de e-mail inválido.")
         msg = EmailMessage()
         msg["Subject"] = "🥢 Sua experiência exclusiva no Fuji Lounge está confirmada"
         msg["From"] = email_origem

@@ -36,11 +36,9 @@ with st.form("form_reserva", border=True):
                                             dict_dados["Unidade"],
                                             aba2,
                                             aba3)
-                st.success(
-                "✅ **Reserva adicionada com sucesso!**\n\n"
-                "📅 Os dados foram salvos na planilha.\n"
-                "📩 Um e-mail de confirmação foi enviado ao cliente."
-            )
+                st.success(f"✅ **Reserva para {dict_dados['Nome']} adicionada com sucesso!**")
+                st.info("📅 Os dados foram salvos na planilha.")
+                st.info("📩 Um e-mail de confirmação foi enviado ao cliente.")
             # Excesso de reservas
             except ValueError as e:
                 st.error(e)  
