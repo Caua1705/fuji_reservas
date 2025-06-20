@@ -35,6 +35,7 @@ def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
 
 def exibir_resumo(df_reservas, ambiente, filial):
     df_agrupado_filial=df_reservas.loc[df_reservas["Unidade"]==filial]
+    st.write(df_agrupado_filial)
     
     if df_agrupado_filial.empty:
         st.info(f"Nenhuma reserva no ambiente **{ambiente}** para esta data.")
