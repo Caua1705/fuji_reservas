@@ -10,8 +10,6 @@ st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
 # Inicializar dados
 df_reservas = inicializar_dados()
 
-# Título e botão de nova reserva
-st.title("🛎️ Gestão de Reservas")
 # TOPO com título + botão
 col1, col2 = st.columns([5, 1])
 with col1:
