@@ -34,17 +34,16 @@ def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
 
 
 def exibir_resumo(df_reservas, ambiente, filial):
-    df_agrupado_filial=df_reservas.loc[df_reservas["Unidade"]==filial]
-    st.write(df_agrupado_filial)
+    st.write(df_reservas)
     
-    if df_agrupado_filial.empty:
+    if df_reservas.empty:
         st.info(f"Nenhuma reserva no ambiente **{ambiente}** para esta data.")
         return
 
-    horarios_unicos = df_agrupado_filial["Horário"].unique()
+    horarios_unicos = df_reservas["Horário"].unique()
 
     for horario in horarios_unicos:
-        df_horario = df_agrupado_filial.loc[df_agrupado_filial["Horário"]==horario]
+        df_horario = df_reservas.loc[df_reservas["Horário"]==horario]
         total_pessoas = df_horario["Número de Pessoas"].sum()
         qtd_reservas = len(df_horario)
 
