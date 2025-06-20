@@ -12,7 +12,11 @@ df_reservas = inicializar_dados()
 
 # Título e botão de nova reserva
 st.title("🛎️ Gestão de Reservas")
-st.markdown("[📂 Abrir Planilha de Reservas](https://docs.google.com/spreadsheets/d/11Xr7aQMRXVMHnfelO0D-ekvOQy-DoJgf3Q7nTBYVf_s/edit?gid=1228814792#gid=1228814792)", unsafe_allow_html=True)
+st.markdown("""
+<a href="https://docs.google.com/spreadsheets/d/11Xr7aQMRXVMHnfelO0D-ekvOQy-DoJgf3Q7nTBYVf_s/edit?gid=1228814792#gid=1228814792" target="_blank">
+    <button style="padding: 8px 16px; font-size: 16px; border-radius: 8px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">📂 Abrir Planilha de Reservas</button>
+</a>
+""", unsafe_allow_html=True)
 linha_divisoria()
 
 # Sidebar - filtros
