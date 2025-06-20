@@ -20,7 +20,6 @@ with st.form("form_reserva", border=True):
 
     enviado = st.form_submit_button("✅ Adicionar Reserva")
 
-
     if enviado:
         campos_obrigatorios = ["Nome", "Email", "Data", "Horário", "Unidade"]
         if not all([dict_dados.get(campo) for campo in campos_obrigatorios]):
