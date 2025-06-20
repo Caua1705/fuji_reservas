@@ -19,11 +19,6 @@ def obter_dados_reserva():
         email = st.text_input("✉️ E-mail para confirmação *")
     observacoes = st.text_input("📝 Observações")
 
-
-    # Validação: retorna None se faltar campos
-    if not nome.strip() or not telefone.strip() or quantidade_pessoas <= 0:
-        return None
-
     return {
         "Data": data,
         "Horário": horario,
