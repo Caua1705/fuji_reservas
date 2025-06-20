@@ -26,7 +26,7 @@ with st.sidebar:
 # Mostrar data selecionada
 st.markdown(f"**📅 Data selecionada:** {data_selecionada.strftime('%d/%m/%Y')}")
 
-# Filtrar reservas
+# Filtrar reservas por data
 reservas_dia = filtrar_df_reservas(df_reservas, data_selecionada)
 
 # Colunas para ambientes
