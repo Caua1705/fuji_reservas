@@ -23,7 +23,6 @@ with col_filtros2:
     filial = st.selectbox("🏢 Filial", ["Aldeota", "Cambeba"])
 # Mostrar data selecionada
 # st.markdown(f"**📅 Data selecionada:** {data_selecionada.strftime('%d/%m/%Y')}")
-linha_divisoria()
 
 # Filtrar reservas por data
 reservas_dia = filtrar_df_reservas(df_reservas, data_selecionada)
