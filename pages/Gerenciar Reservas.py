@@ -12,6 +12,7 @@ df_reservas = inicializar_dados()
 
 # Título e botão de nova reserva
 st.markdown("## 🛎️ Gestão de Reservas")
+st.markdown("[📂 Abrir Planilha de Reservas](https://docs.google.com/spreadsheets/d/11Xr7aQMRXVMHnfelO0D-ekvOQy-DoJgf3Q7nTBYVf_s/edit?gid=1228814792#gid=1228814792)", unsafe_allow_html=True)
 linha_divisoria()
 
 # Sidebar - filtros
