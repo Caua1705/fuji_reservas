@@ -4,10 +4,8 @@ from view.entrada_reserva import obter_dados_reserva
 from controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
 import smtplib
 
-# Config da página
 st.set_page_config(page_title="Fuji Lounge – Reservas", layout="wide",page_icon="🍣")
-
-# Título
+ 
 st.markdown("## 📝 Nova Reserva")
 
 # Inicializa Planilha e Dados
@@ -15,9 +13,8 @@ aba,aba2,aba3=inicializar_abas_planilha()
 df_reservas=inicializar_dados()
 
 # 📝 Formulário de nova reserva 
-with st.form("form_reserva", border=True):
+with st.form("nova_reserva", border=True):
     dict_dados = obter_dados_reserva()
-
     enviado = st.form_submit_button("✅ Adicionar Reserva")
 
     if enviado:

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório Diário de Reservas</title>
+  <style> {{ stylesheet }}</style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Relatório Diário de Reservas - {{ data_relatorio }}</h1>
+  </header>
+
+  <main>
+    <div class="filial-section">
+      <div class="filial-title">Filial Aldeota</div>
+      {{ tabela_aldeota }}
+    </div>
+
+    <div class="filial-section">
+      <div class="filial-title">Filial Cambeba</div>
+      {{ tabela_cambeba }}
+    </div>
+    <!-- Mais filiais fixas aqui -->
+  </main>
+
+  <footer>
+    <p>© 2025 Fuji Lounge - Todos os direitos reservados</p>
+  </footer>
+
+</body>
+
+</html>
