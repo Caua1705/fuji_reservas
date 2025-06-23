@@ -12,7 +12,7 @@ def enviar_email_cliente(email_origem, email_cliente, senha_app, nome_cliente, d
         msg["To"] = email_cliente
 
         pasta_template=Path(__file__).parents[2] / "templates" / "email"
-        nome_template=pasta_template / "email_cliente"
+        nome_template=pasta_template / "email_cliente.jinja"
         caminho_css=Path(__file__).parents[2] / "static" / "css" / "email_cliente.css"
         variaveis_template=variaveis_template_email_cliente(nome_cliente,data,hora,unidade,caminho_css)
         template_renderizado=renderizar_tamplate(pasta_template,nome_template,variaveis_template)
