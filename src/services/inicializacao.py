@@ -1,6 +1,6 @@
 import streamlit as st
-from data.conexao import conectar_planilha
-from services.carregar_dados import carregar_todas_as_reservas
+from src.data.conexao import conectar_planilha
+from src.services.carregar_dados import carregar_todas_as_reservas
 
 def inicializar_abas_planilha():
     if ("aba" not in st.session_state 

@@ -1,9 +1,9 @@
 import streamlit as st
 from datetime import datetime
-from services.inicializacao import inicializar_dados
-from services.filtrar import filtrar_df_reservas,filtrar_por_filial
-from services.reservas import exibir_resumo
-from utils.estilo import linha_divisoria
+from src.services.inicializacao import inicializar_dados
+from src.services.filtrar import filtrar_df_reservas,filtrar_por_filial
+from src.services.reservas import exibir_resumo
+from src.utils.estilo import linha_divisoria
 
 st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
 

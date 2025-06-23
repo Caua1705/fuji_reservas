@@ -1,4 +1,4 @@
-from utils.dias_semana import DICIONARIO_DIAS
+from src.utils.dias_semana import DICIONARIO_DIAS
 #sea que eu preciso dar um df.copy() tambem?
 def agrupar_por_dia(df):
     df_agrupado = df.groupby("Data")["Número de Pessoas"].sum().reset_index()

@@ -1,10 +1,10 @@
 import pandas as pd
 import streamlit as st
-from utils.formatadores import formatar_nova_linha,ORDEM_CAMPOS_RESERVA,formatar_data,formatar_dados,formatar_linhas_agrupadas
-from services.filtrar import filtrar_dataframe,filtrar_por_filial
-from services.agrupar import agrupar_por_dia
-from services.validacoes import validar_reserva
-from model.reservas_model import registrar_reserva,registrar_reservas_por_dia
+from src.utils.formatadores import formatar_nova_linha,ORDEM_CAMPOS_RESERVA,formatar_data,formatar_dados,formatar_linhas_agrupadas
+from src.services.filtrar import filtrar_dataframe,filtrar_por_filial
+from src.services.agrupar import agrupar_por_dia
+from src.services.validacoes import validar_reserva
+from src.model.reservas_model import registrar_reserva,registrar_reservas_por_dia
 
 
 def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
