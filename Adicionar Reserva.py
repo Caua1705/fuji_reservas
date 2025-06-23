@@ -1,7 +1,7 @@
 import streamlit as st
-from services.inicializacao import inicializar_abas_planilha,inicializar_dados
-from view.entrada_reserva import obter_dados_reserva
-from controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
+from src.services.inicializacao import inicializar_abas_planilha,inicializar_dados
+from src.view.entrada_reserva import obter_dados_reserva
+from src.controller.reservas_controller import controlar_nova_reserva,controlar_reservas_por_dia
 import smtplib
 
 st.set_page_config(page_title="Fuji Lounge – Reservas", layout="wide",page_icon="🍣")
