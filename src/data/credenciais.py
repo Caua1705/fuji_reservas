@@ -3,7 +3,7 @@ from pathlib import Path
 def carregar_credenciais():
     try:
         import streamlit as st
-        credenciais_json=st.secrets["CREDENCIAIS_JSON"]
+        credenciais_json=st.secrets["CREDENCIAIS"]
     except FileNotFoundError:
         import json
         caminho_credenciais= Path(__file__).parents[2] / "credenciais.json"
