@@ -1,0 +1,91 @@
+page {
+  size: A4;
+  margin: 20mm 20mm 25mm 20mm;
+}
+
+body {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 11pt;
+  color: #232323;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  padding-top: 40mm; /* ANTES 60mm — subimos tudo */
+}
+
+.data-relatorio {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 15pt;
+  text-align: center;
+  margin-top: -10px; /* subiu um pouco mais */
+  margin-bottom: 35px; /* afastou da tabela */
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 14pt;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+p {
+  font-family: "Roboto Light", sans-serif;
+  text-align: center;
+  margin: 0;
+  font-size: 11pt;
+}
+
+.filial-title {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 14pt;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.bloco-filial {
+  page-break-inside: avoid;
+  margin-bottom: 70px; /* menos espaçamento entre blocos */
+}
+
+.tabela-container {
+  page-break-inside: avoid;
+}
+
+.dataframe {
+  font-family: "Roboto Medium", sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #232323;
+  margin: 5px 0 10px;
+  width: 100%;
+  font-size: 12pt;
+}
+
+.dataframe th {
+  background: #bca598ff;
+  color: #232323;
+  border: 2px solid #232323;
+  text-align: left !important;
+  font-weight: normal;
+  padding: 5px;
+}
+
+.dataframe td, .dataframe th {
+  padding: 5px;
+  border: 1px solid #232323;
+}
+
+.dataframe td {
+  font-weight: normal;
+  color: #232323;
+}
+
+.resumo-filial {
+  font-size: 11pt; /* diminuído de 12pt para 11pt */
+  margin-bottom: 10px;
+  color: #333;
+  font-family: "Roboto Light", sans-serif;
+  font-weight: normal; /* removido negrito */
+}

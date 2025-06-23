@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Relatório Diário de Reservas</title>
+  <style>
+    {{ stylesheet }}
+  </style>
+</head>
+
+<body>
+
+  <p class="data-relatorio">Data do relatório: {{ data_relatorio }}</p>
+
+  <h2 class="filial-title">Filial Aldeota</h2>
+  <div class="bloco-filial">
+    <div class="resumo-filial">
+      <span>Total de Reservas: {{ Total_reservas_aldeota }}</span> &nbsp; | &nbsp;
+      <span>Total de Pessoas: {{ Total_pessoas_aldeota }}</span>
+    </div>
+    <div class="tabela-container">
+      {{ Tabela_aldeota | safe }}
+    </div>
+  </div>
+
+  <h2 class="filial-title">Filial Cambeba</h2>
+  <div class="bloco-filial">
+    <div class="resumo-filial">
+      <span>Total de Reservas: {{ Total_reservas_cambeba }}</span> &nbsp; | &nbsp;
+      <span>Total de Pessoas: {{ Total_pessoas_cambeba }}</span>
+    </div>
+    <div class="tabela-container">
+      {{ Tabela_cambeba | safe }}
+    </div>
+  </div>
+
+</body>
+</html>

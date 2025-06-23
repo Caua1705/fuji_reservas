@@ -1,0 +1,5 @@
+# Ignora o arquivo JSON de credenciais específico
+credenciais.json
+__pycache__/
+*.py[cod]
+output/
