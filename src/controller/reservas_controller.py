@@ -1,12 +1,11 @@
-import streamlit as st
+from src.data.credenciais import carregar_credenciais_email
 from src.services.reservas import processar_nova_reserva,processar_reservas_agrupadas
 from src.services.email_cliente import enviar_email_cliente
 
 def controlar_nova_reserva(df_reservas, data, dict_dados, aba):
     
-    email_origem=st.secrets["email"]["origem"]
-    senha_app=st.secrets["email"]["senha_app"]
     df_atualizado = processar_nova_reserva(df_reservas, data, dict_dados, aba)
+    email_origem,senha_app=carregar_credenciais_email()
     enviar_email_cliente(email_origem,
                             dict_dados["Email"],
                             senha_app,

@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from src.data.credenciais import carregar_credenciais
+from src.data.credenciais import carregar_credenciais_google
 
 def conectar_planilha():
     acesso = [
@@ -8,10 +8,10 @@ def conectar_planilha():
         "https://www.googleapis.com/auth/drive"
     ]
     
-    credenciais_json=carregar_credenciais()
+    credenciais_google=carregar_credenciais_google()
 
     credenciais = Credentials.from_service_account_info(
-        credenciais_json,
+        credenciais_google,
         scopes=acesso
     )
 

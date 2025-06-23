@@ -4,6 +4,8 @@ from email.message import EmailMessage
 from datetime import date
 from reports.pdf.gerar_pdf import gerar_pdf
 from reports.pdf.estilizar_pdf import estilizar_pdf
+from src.data.credenciais import carregar_credenciais_email
+
 
 def enviar_relatorio_diario_por_email(email_origem,
                          email_destinatario,
@@ -52,9 +54,7 @@ def enviar_relatorio_diario_por_email(email_origem,
     except smtplib.SMTPRecipientsRefused:
         raise smtplib.SMTPException(f"Não foi possível enviar o e-mail para **{email_destinatario}**. Verifique se o endereço está correto.")
     
-
-email_origem="financeirofujilounge@gmail.com"
-senha_app="noic lszt cxti yapc"
+email_origem,senha_app=carregar_credenciais_email()
 pasta_template_pdf=Path(__file__).parents[1] / "templates" / "pdf"
 caminho_css=Path(__file__).parents[1] / "static" / "css" / "reservas_diarias.css"
 caminho_layout_pdf=pasta_template_pdf / "layout.pdf"
