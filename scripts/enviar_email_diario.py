@@ -13,6 +13,7 @@ def enviar_relatorio_diario_por_email(email_origem,
                          nome_pessoa,
                          data_relatorio,
                          pasta_template_pdf,
+                         nome_template,
                          caminho_relatorio_pdf,
                          caminho_css,
                          caminho_layout_pdf):
@@ -23,7 +24,7 @@ def enviar_relatorio_diario_por_email(email_origem,
         msg["From"] = email_origem
         msg["To"] = email_destinatario
 
-        gerar_pdf(caminho_relatorio_pdf,caminho_css,pasta_template_pdf,data_relatorio)
+        gerar_pdf(caminho_relatorio_pdf,caminho_css,pasta_template_pdf,nome_template,data_relatorio)
         estilizar_pdf(caminho_relatorio_pdf,caminho_layout_pdf)
 
         html_content = f"""
@@ -56,6 +57,7 @@ def enviar_relatorio_diario_por_email(email_origem,
     
 email_origem,senha_app=carregar_credenciais_email()
 pasta_template_pdf=Path(__file__).parents[1] / "templates" / "pdf"
+nome_template_pdf=pasta_template_pdf / "template_reservas"
 caminho_css=Path(__file__).parents[1] / "static" / "css" / "reservas_diarias.css"
 caminho_layout_pdf=pasta_template_pdf / "layout.pdf"
 email_destinatario="cauaccarvalho10@gmail.com"
@@ -69,6 +71,7 @@ enviar_relatorio_diario_por_email(email_origem,
                          nome_pessoa,
                          data_relatorio,
                          pasta_template_pdf,
+                         nome_template_pdf,
                          caminho_relatorio_pdf,
                          caminho_css,
                          caminho_layout_pdf)

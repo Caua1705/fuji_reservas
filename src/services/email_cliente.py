@@ -1,3 +1,6 @@
+from src.services.variaveis_template import variaveis_template_email_cliente
+from src.services.renderizar import renderizar_tamplate
+from pathlib import Path
 from email.message import EmailMessage
 import smtplib
 
@@ -8,25 +11,13 @@ def enviar_email_cliente(email_origem, email_cliente, senha_app, nome_cliente, d
         msg["From"] = email_origem
         msg["To"] = email_cliente
 
-        html_content = f"""
-        <html>
-        <body>
-            <p>Olá, <strong>{nome_cliente}</strong> 👋,</p>
+        pasta_template=Path(__file__).parens[2] / "templates" / "email"
+        nome_template=pasta_template / "email_cliente"
+        caminho_css=Path(__file__).parents[2] / "static" / "css" / "email_cliente.css"
+        variaveis_template=variaveis_template_email_cliente(nome_cliente,data,hora,unidade,caminho_css)
+        template_renderizado=renderizar_tamplate(pasta_template,nome_template,variaveis_template)
 
-            <p>Sua reserva para o dia <strong>{data}</strong> às <strong>{hora}</strong> na unidade <strong>{unidade}</strong> do <strong>Fuji Lounge</strong> está confirmada! 🍣✨</p>
-
-            <p>Prepare-se para uma experiência gastronômica exclusiva, onde cada detalhe é pensado para encantar seu paladar e criar momentos inesquecíveis. 🥢🎌</p>
-
-            <p>Se precisar alterar alguma coisa, estamos à disposição para ajudar. 📞📧</p>
-
-            <p>Aguardamos ansiosos a sua visita! 🙌</p>
-
-            <p>Com apreço,<br>Equipe <strong>Fuji Lounge</strong> 🍱</p>
-        </body>
-        </html>
-        """
-
-        msg.add_alternative(html_content, subtype="html")
+        msg.add_alternative(template_renderizado, subtype="html")
 
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
             smtp.login(email_origem, senha_app)
