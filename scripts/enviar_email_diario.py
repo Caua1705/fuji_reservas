@@ -56,10 +56,10 @@ def enviar_relatorio_diario_por_email(email_origem,
         raise smtplib.SMTPException(f"Não foi possível enviar o e-mail para **{email_destinatario}**. Verifique se o endereço está correto.")
     
 email_origem,senha_app=carregar_credenciais_email()
-pasta_template_pdf=Path(__file__).parents[1] / "templates" / "pdf"
-nome_template_pdf=pasta_template_pdf / "template_reservas"
+pasta_template_pdf=Path(__file__).parents[1] / "templates" 
+nome_template_pdf="pdf/template_reservas.jinja"
 caminho_css=Path(__file__).parents[1] / "static" / "css" / "reservas_diarias.css"
-caminho_layout_pdf=pasta_template_pdf / "layout.pdf"
+caminho_layout_pdf=pasta_template_pdf / "pdf" /"layout.pdf"
 email_destinatario="cauaccarvalho10@gmail.com"
 nome_pessoa="Cauã"
 data_relatorio=date.today()

@@ -1,6 +1,6 @@
 from weasyprint import HTML
 from reports.reservas_diarias import obter_reservas_do_dia_por_filial
-from services.variaveis_template import variaveis_template_relatorio_diario
+from src.services.variaveis_template import variaveis_template_relatorio_diario
 from src.services.renderizar import renderizar_tamplate
 
 def gerar_pdf(caminho_relatorio,caminho_css,pasta_template,nome_template,data_relatorio):
