@@ -49,6 +49,7 @@ def enviar_relatorio_diario_por_email(email_origem,
             )
 
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.ehlo("localhost")
             smtp.login(email_origem, senha_app)
             smtp.send_message(msg)
 
