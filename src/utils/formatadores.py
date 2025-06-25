@@ -2,10 +2,12 @@ import pandas as pd
 
 COLUNAS_RESERVA = ["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"]
 
-def formatar_nova_linha(dict_dados, ordem_campos):
-    lista_nova_linha = [str(dict_dados[campo]) for campo in ordem_campos]
-    lista_nova_linha[0] = dict_dados["Data"].strftime("%d/%m/%Y")
+def criar_linha_reserva(dict_dados, COLUNAS_RESERVA):
+    lista_nova_linha = [str(dict_dados[campo]) for campo in COLUNAS_RESERVA]
     return lista_nova_linha
+
+    lista_nova_linha[0] = dict_dados["Data"].strftime("%d/%m/%Y")
+
 
 def formatar_dados(df):
      df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y", errors="coerce")

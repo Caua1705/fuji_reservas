@@ -1,21 +1,24 @@
 import pandas as pd
 import streamlit as st
-from src.utils.formatadores import formatar_nova_linha,ORDEM_CAMPOS_RESERVA,formatar_data,formatar_dados,formatar_linhas_agrupadas
-from src.services.filtrar import filtrar_dataframe,filtrar_por_filial
+from src.utils.config import MAXIMO_RESERVAS
+from src.utils.formatadores import criar_linha_reserva, COLUNAS_RESERVA, 
+
+formatar_data,formatar_dados,formatar_linhas_agrupadas
+from src.services.filtrar import filtrar_dataframe_data,filtrar_por_filial
 from src.services.agrupar import agrupar_por_dia
 from src.services.validacoes import validar_reserva
 from src.model.reservas_model import registrar_reserva,registrar_reservas_por_dia
 
-
-def processar_nova_reserva(df_reservas, data, dict_dados, aba, maximo_reservas=50):
-    nova_linha = formatar_nova_linha(dict_dados, ORDEM_CAMPOS_RESERVA)
-    df_nova_linha = pd.DataFrame([nova_linha], columns=df_reservas.columns)
+def processar_nova_reserva(df_reservas, data, dict_dados, aba, MAXIMO_RESERVAS):
+    linha_nova = criar_linha_reserva(dict_dados, COLUNAS_RESERVA)
+    df_linha_nova = pd.DataFrame([linha_nova], columns=df_reservas.columns)
     df_nova_linha = formatar_dados(df_nova_linha)
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
-    df_filtrado = filtrar_dataframe(df_atualizado, data)
-    validar_reserva(df_filtrado, maximo_reservas)
+    df_filtrado = filtrar_dataframe_data(df_atualizado, data)
+    validar_reserva(df_filtrado, MAXIMO_RESERVAS)
     registrar_reserva(nova_linha, aba)
     return df_atualizado
+
 
 def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
     df_filtrado=filtrar_por_filial(df_reservas,filial)
@@ -23,6 +26,7 @@ def processar_reservas_agrupadas(df_reservas,filial,aba2,aba3):
     df_agrupado=formatar_data(df_agrupado,"Data")
     linhas = formatar_linhas_agrupadas(df_agrupado)
     registrar_reservas_por_dia(linhas,filial,aba2,aba3)
+
 
 def exibir_resumo(df_reservas, ambiente):
     if df_reservas.empty:

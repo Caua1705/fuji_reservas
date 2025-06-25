@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import datetime
 from src.services.inicializacao import inicializar_dados
-from src.services.filtrar import filtrar_df_reservas,filtrar_por_filial
+from src.services.filtrar import filtrar_dataframe_data,filtrar_por_filial
 from src.services.reservas import exibir_resumo
 from src.utils.estilo import linha_divisoria
 
@@ -36,7 +36,7 @@ with col_filtros2:
 linha_divisoria()
 
 # Filtrar reservas por data
-reservas_dia = filtrar_df_reservas(df_reservas, data_selecionada)
+reservas_dia = filtrar_dataframe_data(df_reservas, data_selecionada)
 #Filtrar por Filial
 reservas_dia_filial=filtrar_por_filial(reservas_dia,filial)
 # Colunas para ambientes

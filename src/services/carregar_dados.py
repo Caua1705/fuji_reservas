@@ -4,14 +4,14 @@ from src.data.conexao import conectar_planilha
 from src.utils.formatadores import formatar_dados
 from src.utils.formatadores import COLUNAS_RESERVA
 
-def obter_dados_brutos():
+def obter_dados_brutos(aba):
     abas = conectar_planilha()
-    aba_reservas = abas[0]
-    return ler_todas_reservas(aba_reservas)
+    todas_reservas = ler_todas_reservas(abas[aba])
+    return todas_reservas
 
 
-def carregar_df_reservas():
-    todas_reservas = obter_dados_brutos()
+def carregar_df_reservas(aba):
+    todas_reservas = obter_dados_brutos(aba)
     
     if not todas_reservas or len(todas_reservas) < 2:
         dados = []
