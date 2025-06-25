@@ -1,6 +1,6 @@
 import pandas as pd
 
-ORDEM_CAMPOS_RESERVA = ["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"]
+COLUNAS_RESERVA = ["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"]
 
 def formatar_nova_linha(dict_dados, ordem_campos):
     lista_nova_linha = [str(dict_dados[campo]) for campo in ordem_campos]

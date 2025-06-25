@@ -2,19 +2,23 @@ import pandas as pd
 from src.model.reservas_model import ler_todas_reservas
 from src.data.conexao import conectar_planilha
 from src.utils.formatadores import formatar_dados
+from src.utils.formatadores import COLUNAS_RESERVA
 
-def carregar_todas_as_reservas():
-    aba,_,_ = conectar_planilha()
-    linhas = ler_todas_reservas(aba)
+def obter_dados_brutos():
+    abas = conectar_planilha()
+    aba_reservas = abas[0]
+    return ler_todas_reservas(aba_reservas)
 
-    if not linhas or len(linhas) < 2:
-        # Não há dados suficientes (só colunas ou nem isso)
-        df = pd.DataFrame(columns=["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"])
-        df = formatar_dados(df)
-        
-    # Usa a primeira linha como cabeçalho
-    colunas = linhas[0]
-    dados = linhas[1:]
+
+def carregar_df_reservas():
+    todas_reservas = obter_dados_brutos()
+    
+    if not todas_reservas or len(todas_reservas) < 2:
+        dados = []
+        colunas = COLUNAS_RESERVA
+    else:
+        colunas = todas_reservas[0]
+        dados = todas_reservas[1:]
 
     df = pd.DataFrame(dados, columns=colunas)
     df = formatar_dados(df)
