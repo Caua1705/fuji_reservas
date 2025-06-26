@@ -61,8 +61,8 @@ pasta_template_pdf=Path(__file__).parents[1] / "templates"
 nome_template_pdf="pdf/template_reservas.jinja"
 caminho_css=Path(__file__).parents[1] / "static" / "css" / "reservas_diarias.css"
 caminho_layout_pdf=pasta_template_pdf / "pdf" /"layout.pdf"
-email_destinatario="cauaccarvalho10@gmail.com"
-nome_pessoa="Cauã"
+email_destinatario="mpeixotoecon@gmail.com"
+nome_pessoa="Marcelo"
 data_relatorio=date.today()
 caminho_relatorio_pdf=Path(__file__).parents[1] / "output" / f"Relatório Diário - {data_relatorio}.pdf"
 

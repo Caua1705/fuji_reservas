@@ -6,7 +6,7 @@ def carregar_credenciais_google():
         credenciais_google=st.secrets["CREDENCIAIS_GOOGLE"]
     except FileNotFoundError:
         import json
-        caminho_credenciais_google = Path(__file__).parents[2] / "credenciais.json"
+        caminho_credenciais_google = Path(__file__).parents[2] / "credenciais_google.json"
         with open(caminho_credenciais_google,"r") as credenciais:
             credenciais_google=json.load(credenciais)
     return credenciais_google
