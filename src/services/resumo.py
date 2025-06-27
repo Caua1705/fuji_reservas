@@ -3,10 +3,10 @@ from src.services.filtrar import filtrar_por_filial
 from src.utils.formatadores import formatar_coluna_data_para_string, formatar_linhas_agrupadas
 from src.services.agrupar import agrupar_por_dia
 
-def gerar_resumo_reservas(df_reservas,filial):
-    df_filtrado=filtrar_por_filial(df_reservas,filial)
-    df_agrupado=agrupar_por_dia(df_filtrado)
-    df_agrupado=formatar_coluna_data_para_string(df_agrupado,"Data")
+def gerar_resumo_reservas(df_reservas, filial):
+    df_filtrado = filtrar_por_filial(df_reservas, filial)
+    df_agrupado = agrupar_por_dia(df_filtrado)
+    df_agrupado = formatar_coluna_data_para_string(df_agrupado, "Data")
     linhas_resumo = formatar_linhas_agrupadas(df_agrupado)
     return linhas_resumo
 

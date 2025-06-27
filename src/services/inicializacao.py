@@ -5,7 +5,7 @@ from src.config.settings import MAPA_FILIAL_PARA_ABA
 
 def inicializar_abas_planilha():
     if not all(aba in st.session_state for aba in MAPA_FILIAL_PARA_ABA.values()):
-        for chave,aba in zip(MAPA_FILIAL_PARA_ABA.values(), get_abas()):
+        for chave, aba in zip(MAPA_FILIAL_PARA_ABA.values(), get_abas()):
             st.session_state[chave] = aba
     return st.session_state["aba_reservas"], st.session_state["aba_resumo_aldeota"], st.session_state["aba_resumo_cambeba"]
         

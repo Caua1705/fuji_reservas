@@ -1,5 +1,5 @@
 import streamlit as st
-from src.utils.config import MAPA_FILIAL_PARA_ABA, MAXIMO_RESERVAS
+from src.config.settings import MAPA_FILIAL_PARA_ABA, MAXIMO_RESERVAS
 from src.data.credenciais import get_credenciais_google
 from src.services.email_cliente import enviar_email_cliente
 from src.services.reservas import processar_nova_reserva

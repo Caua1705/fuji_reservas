@@ -1,7 +1,7 @@
 import pandas as pd
 from src.model.reservas_model import registrar_reserva
 from src.services.filtrar import filtrar_dataframe_data
-from src.services.validacoes import validar_reserva
+from src.services.validacoes import validar_nova_reserva
 from src.utils.formatadores import formatar_data_para_string, formatar_dados
 
 def criar_linha_reserva(dict_dados, colunas):
@@ -21,7 +21,7 @@ def processar_nova_reserva(df_reservas, data, dict_dados, aba_reservas, maximo_r
     df_atualizado = pd.concat([df_reservas, df_nova_linha], ignore_index=True)
 
     df_filtrado = filtrar_dataframe_data(df_atualizado, data)
-    validar_reserva(df_filtrado, maximo_reservas)
+    validar_nova_reserva(df_filtrado, maximo_reservas)
 
     registrar_reserva(linha_para_salvar, aba_reservas)
     return df_atualizado
