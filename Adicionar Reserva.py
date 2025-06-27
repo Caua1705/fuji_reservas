@@ -10,7 +10,7 @@ st.markdown("## 📝 Nova Reserva")
 
 # Inicializa Planilha e Dados
 aba,aba2,aba3=inicializar_abas_planilha()
-df_reservas=inicializar_dados()
+df_reservas=inicializar_dados(aba)
 
 # 📝 Formulário de nova reserva 
 with st.form("nova_reserva", border=True):
@@ -29,11 +29,11 @@ with st.form("nova_reserva", border=True):
                     dict_dados,
                     aba
                 )
-                st.session_state.df_reservas=df_atualizado
                 controlar_reservas_por_dia(st.session_state.df_reservas,
                                             dict_dados["Unidade"],
                                             aba2,
                                             aba3)
+                st.session_state.df_reservas=df_atualizado
                 st.success(f"✅ **Reserva para {dict_dados['Nome']} adicionada com sucesso!**")
                 st.info("📩 Um e-mail de confirmação foi enviado ao cliente.")
             # Excesso de reservas

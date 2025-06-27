@@ -1,6 +1,6 @@
 import json
 import streamlit as st
-from src.utils.paths import caminhos
+from src.config.paths import CAMINHOS
 
 def buscar_credenciais(chave_secrets, caminho_json):
     try:
@@ -11,10 +11,10 @@ def buscar_credenciais(chave_secrets, caminho_json):
 
 
 def get_credenciais_google():
-    return buscar_credenciais("CREDENCIAIS_GOOGLE",caminhos["Credenciais_google"])
+    return buscar_credenciais("CREDENCIAIS_GOOGLE",CAMINHOS["Credenciais_google"])
 
 
 def get_credenciais_email():
-    dados = buscar_credenciais("email",caminhos["Credenciais_email"])
+    dados = buscar_credenciais("email",CAMINHOS["Credenciais_email"])
     return dados["origem"], dados["senha_app"]
 

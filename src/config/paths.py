@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR=Path(__file__).parents[2]
 
-caminhos={
+CAMINHOS={
     "Credenciais_google": BASE_DIR / "credenciais_google.json",
     "Credenciais_email": BASE_DIR / "credenciais_email.json",
     "Pasta_templates": BASE_DIR / "templates",

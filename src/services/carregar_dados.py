@@ -1,17 +1,15 @@
 import pandas as pd
+from src.config.settings import COLUNAS_RESERVA
 from src.model.reservas_model import ler_todas_reservas
-from src.data.conexao import conectar_planilha
 from src.utils.formatadores import formatar_dados
-from src.utils.formatadores import COLUNAS_RESERVA
 
 def obter_dados_brutos(aba):
-    abas = conectar_planilha()
-    todas_reservas = ler_todas_reservas(abas[aba])
+    todas_reservas = ler_todas_reservas(aba)
     return todas_reservas
 
 
-def carregar_df_reservas(aba):
-    todas_reservas = obter_dados_brutos(aba)
+def carregar_df_reservas(aba_reservas):
+    todas_reservas = obter_dados_brutos(aba_reservas)
     
     if not todas_reservas or len(todas_reservas) < 2:
         dados = []
