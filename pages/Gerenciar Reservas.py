@@ -2,7 +2,7 @@ import streamlit as st
 from datetime import datetime
 from src.services.inicializacao import inicializar_dados
 from src.services.filtrar import filtrar_dataframe_data,filtrar_por_filial
-from src.services.reservas import exibir_resumo
+# from src.services.reservas import exibir_resumo
 from src.utils.estilo import linha_divisoria
 
 st.set_page_config(page_title="Gerenciamento de Reservas", layout="wide")
@@ -42,14 +42,14 @@ reservas_dia_filial=filtrar_por_filial(reservas_dia,filial)
 # Colunas para ambientes
 col1, col2 = st.columns(2)
 
-with col1:
-    st.markdown(f"### 🍽️ Ambiente Interno – {filial}")
-    df_ambiente_interno = reservas_dia_filial.loc[reservas_dia_filial["Área do Restaurante"] == "Interno"]
-    st.markdown(f"**Total de reservas:** {len(df_ambiente_interno)}")
-    exibir_resumo(df_ambiente_interno, "Interno")
+# with col1:
+#     st.markdown(f"### 🍽️ Ambiente Interno – {filial}")
+#     df_ambiente_interno = reservas_dia_filial.loc[reservas_dia_filial["Área do Restaurante"] == "Interno"]
+#     st.markdown(f"**Total de reservas:** {len(df_ambiente_interno)}")
+#     exibir_resumo(df_ambiente_interno, "Interno")
 
-with col2:
-    st.markdown(f"### 🌤️ Ambiente Externo – {filial}")
-    df_ambiente_externo = reservas_dia_filial.loc[reservas_dia_filial["Área do Restaurante"] == "Externo"]
-    st.markdown(f"**Total de reservas:** {len(df_ambiente_externo)}")
-    exibir_resumo(df_ambiente_externo, "Externo")
+# with col2:
+#     st.markdown(f"### 🌤️ Ambiente Externo – {filial}")
+#     df_ambiente_externo = reservas_dia_filial.loc[reservas_dia_filial["Área do Restaurante"] == "Externo"]
+#     st.markdown(f"**Total de reservas:** {len(df_ambiente_externo)}")
+#     exibir_resumo(df_ambiente_externo, "Externo")

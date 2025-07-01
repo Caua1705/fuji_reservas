@@ -11,7 +11,7 @@ st.set_page_config(page_title="Fuji Lounge – Reservas", layout="wide", page_ic
 st.markdown("## 📝 Nova Reserva")
 
 # Inicializa Planilha e Dados
-aba_reservas, aba_resumo_aldeota,aba_resumo_cambeba = inicializar_abas_planilha()
+aba_reservas, aba_resumo_aldeota, aba_resumo_cambeba = inicializar_abas_planilha()
 df_reservas = inicializar_dados(aba_reservas)
 
 # 📝 Formulário de nova reserva 
