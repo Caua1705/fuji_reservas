@@ -1,4 +1,4 @@
-DICIONARIO_DIAS={
+dicionario_dias={
 0:"segunda-feira",
 1:"terça-feira",
 2:"quarta-feira",

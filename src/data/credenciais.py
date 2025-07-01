@@ -1,26 +1,28 @@
-from pathlib import Path
+import json
+import streamlit as st
+from src.config.paths import CAMINHOS
 
-def carregar_credenciais_google():
+def buscar_credenciais(chave_secrets, caminho_json):
     try:
-        import streamlit as st
-        credenciais_google=st.secrets["CREDENCIAIS_GOOGLE"]
+        return st.secrets[chave_secrets]
     except FileNotFoundError:
+<<<<<<< HEAD
         import json
         caminho_credenciais_google = Path(__file__).parents[2] / "credenciais_google.json"
         with open(caminho_credenciais_google,"r") as credenciais:
             credenciais_google=json.load(credenciais)
     return credenciais_google
+=======
+        with open(caminho_json,"r") as credenciais:
+            return json.load(credenciais)
 
-def carregar_credenciais_email():
-    try:
-        import streamlit as st
-        email_origem=st.secrets["email"]["origem"]
-        senha_app=st.secrets["email"]["senha_app"]
-    except FileNotFoundError:
-        import json
-        caminho_credenciais_email = Path(__file__).parents[2] / "email_config.json"
-        with open(caminho_credenciais_email,"r") as credenciais:
-            credenciais_google=json.load(credenciais)
-        email_origem=credenciais_google["origem"]
-        senha_app=credenciais_google["senha_app"]
-    return email_origem,senha_app
+
+def get_credenciais_google():
+    return buscar_credenciais("CREDENCIAIS_GOOGLE",CAMINHOS["Credenciais_google"])
+
+
+def get_credenciais_email():
+    dados = buscar_credenciais("email",CAMINHOS["Credenciais_email"])
+    return dados["origem"], dados["senha_app"]
+>>>>>>> refatorando_codigos
+
