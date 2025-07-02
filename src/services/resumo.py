@@ -1,4 +1,3 @@
-from src.model.reservas_model import registrar_reservas_por_dia
 from src.services.filtrar import filtrar_por_filial
 from src.utils.formatadores import formatar_coluna_data_para_string, formatar_linhas_agrupadas
 from src.services.agrupar import agrupar_por_dia
@@ -9,11 +8,6 @@ def gerar_resumo_reservas(df_reservas, filial):
     df_agrupado = formatar_coluna_data_para_string(df_agrupado, "Data")
     linhas_resumo = formatar_linhas_agrupadas(df_agrupado)
     return linhas_resumo
-
-
-def salvar_resumo_reservas(df_reservas, filial, mapa_filial, abas_no_session_state):
-    linhas = gerar_resumo_reservas(df_reservas, filial)
-    registrar_reservas_por_dia(linhas, filial, mapa_filial, abas_no_session_state)
 
 
 # def exibir_resumo(df_reservas, ambiente):

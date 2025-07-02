@@ -1,17 +1,17 @@
-import streamlit as st
-from src.config.settings import MAPA_FILIAL_PARA_ABA, MAXIMO_RESERVAS
-from src.data.credenciais import get_credenciais_google
+from src.services.session import obter_aba_geral
+from src.config.settings import  MAXIMO_RESERVAS
+from src.services.reservas import preparar_reserva_para_salvar
+from src.model.reservas_model import registrar_reserva
+from src.data.credenciais import get_credenciais_email
 from src.services.email_cliente import enviar_email_cliente
-from src.services.reservas import processar_nova_reserva
-from src.services.resumo import salvar_resumo_reservas
 
-def controlar_nova_reserva(df_reservas, data, dict_dados, aba_reservas):
-    """Processa nova reserva e envia email para o cliente."""
-    df_atualizado = processar_nova_reserva(
-        df_reservas, data, dict_dados, aba_reservas, MAXIMO_RESERVAS
-    )
+def controlar_nova_reserva(df_reservas, data, dict_dados):
+    """Processa nova reserva, salva no Google Sheets e envia email de confirmação."""
+    df_atualizado, nova_linha = preparar_reserva_para_salvar(df_reservas, data, dict_dados, MAXIMO_RESERVAS)
+    aba = obter_aba_geral()
+    registrar_reserva(aba, nova_linha)
 
-    email_origem, senha_app = get_credenciais_google()
+    email_origem, senha_app = get_credenciais_email()
     enviar_email_cliente(
         email_origem,
         senha_app,
@@ -22,8 +22,4 @@ def controlar_nova_reserva(df_reservas, data, dict_dados, aba_reservas):
         dict_dados["Unidade"],
     )
     return df_atualizado
-
-
-def controlar_reservas_por_dia(df_reservas, filial):
-    """Salva resumo de reservas por filial na planilha do google."""
-    salvar_resumo_reservas(df_reservas, filial, MAPA_FILIAL_PARA_ABA, st.session_state)
+    

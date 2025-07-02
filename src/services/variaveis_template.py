@@ -2,6 +2,7 @@ def adicionar_css_ao_template(variaveis_template, caminho_css):
     with open(caminho_css, "r") as style:
         css = style.read()
     variaveis_template["stylesheet"] = css
+    return variaveis_template
 
 
 def variaveis_template_relatorio_diario(dados_filiais, data_relatorio, caminho_css):
