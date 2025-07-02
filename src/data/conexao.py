@@ -2,7 +2,6 @@ import gspread
 from src.config.settings import SCOPES
 from google.oauth2.service_account import Credentials
 from src.data.credenciais import get_credenciais_google
-import streamlit as st
 
 def conectar_planilha():
     credenciais_google = get_credenciais_google()
@@ -14,5 +13,4 @@ def conectar_planilha():
 def get_abas():
     cliente = conectar_planilha()
     planilha = cliente.open("reservas_fuji")
-    st.write(planilha.get_worksheet(0))
     return [planilha.get_worksheet(i) for i in range(3)]
