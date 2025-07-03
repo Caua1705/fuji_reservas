@@ -9,8 +9,6 @@ from src.controller.resumo_controller import controlar_reservas_por_dia
 
 st.set_page_config(page_title="Fuji Lounge – Reservas", layout="wide", page_icon="🍣")
  
-st.markdown("## 📝 Nova Reserva")                                                                          
-
 # Inicializa Planilha e Dados
 inicializar_abas_planilha()
 df_reservas = inicializar_dados(st.session_state["aba_reservas"])
