@@ -10,7 +10,7 @@ MAPA_FILIAL_PARA_ABA = {
     "Cambeba": "aba_resumo_cambeba",
 }
 COLUNAS_PLANILHA_RESERVAS = ["Data", "Horário", "Nome", "Telefone", "Email", "Número de Pessoas", "Unidade", "Área do Restaurante", "Observações"]
-CAMPOS_OBRIGATORIOS_FORMULARIO = ["Nome", "Email", "Data", "Horário", "Unidade"]
+CAMPOS_OBRIGATORIOS_FORMULARIO = ["Data", "Nome", "Email", "Telefone", "Horário", "Unidade"]
 HORARIOS_RESERVAS = [
     "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", 
     "20:00", "20:30", "21:00", "21:30", "22:00"
