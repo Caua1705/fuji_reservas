@@ -22,7 +22,7 @@ def obter_dados_reserva():
     st.markdown("#### Agendamento da Mesa")
     col3, col4 = st.columns(2)
     with col3:
-        data = st.date_input("Data *", value=datetime.today(), format="DD/MM/YYYY")
+        data = st.date_input("Data *", min_value=datetime.today(), value=datetime.today(), format="DD/MM/YYYY")
     with col4:
         horario = st.selectbox("Horário *", HORARIOS_RESERVAS)
 
